@@ -1,10 +1,10 @@
 package ru.quest.lect1;
 
 public class Point {
-    double x, y;
-    public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public double x, y;
+    public Point(double x1, double y1) {
+        this.x = x1;
+        this.y = y1;
     }
 
     public void main (String[] args) {
