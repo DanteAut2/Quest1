@@ -1,12 +1,11 @@
 package ru.quest.lect1;
 
 public class questOne {
-	public void main(String[] args){
+	public static void main(String[] args){
+		Point a = new Point (3, 6);
+		Point b = new Point (2, 4);
 		System.out.println("Inputed some text for first question");
-		System.out.println("Расстояние между точками равно " + x.distance());
+		System.out.println("Расстояние между точками равно " + a.distance(a,b));
 	}
-	public double distance(Point a, Point b) {
 
-		return Math.sqrt((b.x - a.x) * (b.x - a.x) * (b.y - a.y) * (b.y - a.y));
-	}
 }

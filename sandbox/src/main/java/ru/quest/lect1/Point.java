@@ -6,12 +6,10 @@ public class Point {
         this.x = x1;
         this.y = y1;
     }
+    public static double distance(Point a, Point b) {
 
-    public void main (String[] args) {
-        Point a = new Point(2,4);
-        Point b = new Point(3,2);
+        return Math.sqrt((b.x - a.x) * (b.x - a.x) * (b.y - a.y) * (b.y - a.y));
     }
-
 }
 
 
