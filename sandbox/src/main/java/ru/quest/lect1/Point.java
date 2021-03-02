@@ -6,9 +6,9 @@ public class Point {
         this.x = x1;
         this.y = y1;
     }
-    public static double distance(Point a, Point b) {
+    public double distance(Point b) {
 
-        return Math.sqrt((b.x - a.x) * (b.x - a.x) * (b.y - a.y) * (b.y - a.y));
+        return Math.sqrt((b.x - this.x) * (b.x - this.x) * (b.y - this.y) * (b.y - this.y));
     }
 }
 
