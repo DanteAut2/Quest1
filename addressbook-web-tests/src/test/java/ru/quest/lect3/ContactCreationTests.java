@@ -1,148 +1,165 @@
 package ru.quest.lect3;
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-    public class ContactCreationTests {
-        private WebDriver driver;
-        private String baseUrl;
-        private boolean acceptNextAlert = true;
-        private StringBuffer verificationErrors = new StringBuffer();
+public class ContactCreationTests {
+    private WebDriver wd;
 
-        @BeforeClass(alwaysRun = true)
-        public void setUp() throws Exception {
-            driver = new FirefoxDriver();
-            baseUrl = "https://www.google.com/";
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        }
-
-        @Test
-        public void testUntitledTestCase() throws Exception {
-            driver.get("http://localhost/addressbook/edit.php");
-            driver.findElement(By.name("user")).clear();
-            driver.findElement(By.name("user")).sendKeys("admin");
-            driver.findElement(By.name("pass")).clear();
-            driver.findElement(By.name("pass")).sendKeys("secret");
-            driver.findElement(By.xpath("//input[@value='Login']")).click();
-            driver.findElement(By.linkText("add new")).click();
-            driver.findElement(By.name("firstname")).click();
-            driver.findElement(By.name("firstname")).clear();
-            driver.findElement(By.name("firstname")).sendKeys("Krutoy");
-            driver.findElement(By.name("middlename")).click();
-            driver.findElement(By.name("middlename")).clear();
-            driver.findElement(By.name("middlename")).sendKeys("Perec");
-            driver.findElement(By.name("lastname")).click();
-            driver.findElement(By.name("lastname")).clear();
-            driver.findElement(By.name("lastname")).sendKeys("Piwet");
-            driver.findElement(By.name("nickname")).click();
-            driver.findElement(By.name("nickname")).clear();
-            driver.findElement(By.name("nickname")).sendKeys("Bukovi");
-            driver.findElement(By.name("title")).click();
-            driver.findElement(By.name("title")).clear();
-            driver.findElement(By.name("title")).sendKeys("Piwu Titlu");
-            driver.findElement(By.name("company")).click();
-            driver.findElement(By.name("company")).clear();
-            driver.findElement(By.name("company")).sendKeys("Kompaniu Piwu");
-            driver.findElement(By.name("address")).click();
-            driver.findElement(By.name("address")).clear();
-            driver.findElement(By.name("address")).sendKeys("4to eto za mesto");
-            driver.findElement(By.name("home")).click();
-            driver.findElement(By.name("home")).clear();
-            driver.findElement(By.name("home")).sendKeys("11111");
-            driver.findElement(By.name("mobile")).click();
-            driver.findElement(By.name("mobile")).clear();
-            driver.findElement(By.name("mobile")).sendKeys("22222");
-            driver.findElement(By.name("work")).click();
-            driver.findElement(By.name("work")).clear();
-            driver.findElement(By.name("work")).sendKeys("33333");
-            driver.findElement(By.name("fax")).click();
-            driver.findElement(By.name("fax")).clear();
-            driver.findElement(By.name("fax")).sendKeys("44444");
-            driver.findElement(By.name("email")).click();
-            driver.findElement(By.name("email")).clear();
-            driver.findElement(By.name("email")).sendKeys("sdfgsdfg@gdfg.ru");
-            driver.findElement(By.name("email2")).clear();
-            driver.findElement(By.name("email2")).sendKeys("dfjfdgddg@gdjf.ru");
-            driver.findElement(By.name("email3")).clear();
-            driver.findElement(By.name("email3")).sendKeys("jddfgjisdjfg@gdjfkjg.com");
-            driver.findElement(By.name("homepage")).click();
-            driver.findElement(By.name("homepage")).clear();
-            driver.findElement(By.name("homepage")).sendKeys("sdgsdfghdfhfdsfg");
-            driver.findElement(By.name("bday")).click();
-            new Select(driver.findElement(By.name("bday"))).selectByVisibleText("16");
-            driver.findElement(By.name("bday")).click();
-            driver.findElement(By.name("bmonth")).click();
-            new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText("August");
-            driver.findElement(By.name("bmonth")).click();
-            driver.findElement(By.name("byear")).click();
-            driver.findElement(By.name("byear")).clear();
-            driver.findElement(By.name("byear")).sendKeys("1978");
-            driver.findElement(By.name("aday")).click();
-            new Select(driver.findElement(By.name("aday"))).selectByVisibleText("17");
-            driver.findElement(By.name("aday")).click();
-            driver.findElement(By.name("amonth")).click();
-            new Select(driver.findElement(By.name("amonth"))).selectByVisibleText("May");
-            driver.findElement(By.name("amonth")).click();
-            driver.findElement(By.name("ayear")).click();
-            driver.findElement(By.name("ayear")).clear();
-            driver.findElement(By.name("ayear")).sendKeys("1980");
-            driver.findElement(By.name("address2")).click();
-            driver.findElement(By.name("address2")).clear();
-            driver.findElement(By.name("address2")).sendKeys("vtoroi takoi");
-            driver.findElement(By.name("phone2")).click();
-            driver.findElement(By.name("phone2")).clear();
-            driver.findElement(By.name("phone2")).sendKeys("49");
-            driver.findElement(By.name("notes")).clear();
-            driver.findElement(By.name("notes")).sendKeys("nu o4 bolshoy dvorec");
-            driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-            driver.findElement(By.linkText("home page")).click();
-            driver.findElement(By.linkText("Logout")).click();
-        }
-
-        @AfterClass(alwaysRun = true)
-        public void tearDown() throws Exception {
-            driver.quit();
-            String verificationErrorString = verificationErrors.toString();
-            if (!"".equals(verificationErrorString)) {
-                fail(verificationErrorString);
-            }
-        }
-
-        private boolean isElementPresent(By by) {
-            try {
-                driver.findElement(by);
-                return true;
-            } catch (NoSuchElementException e) {
-                return false;
-            }
-        }
-
-        private boolean isAlertPresent() {
-            try {
-                driver.switchTo().alert();
-                return true;
-            } catch (NoAlertPresentException e) {
-                return false;
-            }
-        }
-
-        private String closeAlertAndGetItsText() {
-            try {
-                Alert alert = driver.switchTo().alert();
-                String alertText = alert.getText();
-                if (acceptNextAlert) {
-                    alert.accept();
-                } else {
-                    alert.dismiss();
-                }
-                return alertText;
-            } finally {
-                acceptNextAlert = true;
-            }
+    @BeforeMethod(alwaysRun = true)
+    public void setUp() throws Exception {
+        wd = new FirefoxDriver();
+        wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        wd.get("http://localhost/addressbook/edit.php");
+        login("admin", "secret");
+    }
+    private void login(String login, String password) { //Логин на сайте
+        wd.findElement(By.name("user")).clear();
+        wd.findElement(By.name("user")).sendKeys(login);
+        wd.findElement(By.name("pass")).clear();
+        wd.findElement(By.name("pass")).sendKeys(password);
+        wd.findElement(By.xpath("//input[@value='Login']")).click();
+    }
+    @Test
+    public void creatingNewUser() throws Exception { //Главный список действий
+        createNewUser();
+        inputFirstMiddleLastName(new InputNames("krutoy", "perec", "vashe"));
+        inputNickname("Bukovi");
+        inputTitle("Piwu Titlu");
+        inputCompany("Kompaniu Piwu");
+        inputAddress("4to eto za mesto");
+        homeMobileWorkFaxNumber(new InputNumbers("11111", "22222", "33333", "44444"));
+        inputEmails(new InputEmails("sfjsdjfsf", "dfiojgfiodsjf", "fdhsfhsdf"));
+        inputHomepage("sdgsdfghdfhfdsfg");
+        inputBdayAday(new InputDates("14", "April", "1984", "24", "May", "1994"));
+        InputSecondary(new InputSecondarys("ulica pishkina", "dom kolotushkina", "4toto eshe"));
+        confirm();
+        homepage();
+        logout();
+    }
+    private void logout() {
+        wd.findElement(By.linkText("Logout")).click();
+    }
+    private void homepage() {
+        wd.findElement(By.linkText("home page")).click();
+    }
+    private void confirm() {
+        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    }
+    private void InputSecondary(InputSecondarys inputSecondarys) { //Ввод полей Secondary
+        wd.findElement(By.name("address2")).click();
+        wd.findElement(By.name("address2")).clear();
+        wd.findElement(By.name("address2")).sendKeys(inputSecondarys.getSecondAddress());
+        wd.findElement(By.name("phone2")).click();
+        wd.findElement(By.name("phone2")).clear();
+        wd.findElement(By.name("phone2")).sendKeys(inputSecondarys.getSecondAddressHomeNumber());
+        wd.findElement(By.name("notes")).clear();
+        wd.findElement(By.name("notes")).sendKeys(inputSecondarys.getNotes());
+    }
+    private void inputBdayAday(InputDates inputDates) { //Ввод Дат
+        wd.findElement(By.name("bday")).click();
+        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(inputDates.getbDayDay());
+        wd.findElement(By.name("bday")).click();
+        wd.findElement(By.name("bmonth")).click();
+        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(inputDates.getbDayMonth());
+        wd.findElement(By.name("bmonth")).click();
+        wd.findElement(By.name("byear")).click();
+        wd.findElement(By.name("byear")).clear();
+        wd.findElement(By.name("byear")).sendKeys(inputDates.getbDayYear());
+        wd.findElement(By.name("aday")).click();
+        new Select(wd.findElement(By.name("aday"))).selectByVisibleText(inputDates.getaDayDay());
+        wd.findElement(By.name("aday")).click();
+        wd.findElement(By.name("amonth")).click();
+        new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(inputDates.getaDayMonth());
+        wd.findElement(By.name("amonth")).click();
+        wd.findElement(By.name("ayear")).click();
+        wd.findElement(By.name("ayear")).clear();
+        wd.findElement(By.name("ayear")).sendKeys(inputDates.getaDayYear());
+    }
+    private void inputHomepage(String homepage) {
+        wd.findElement(By.name("homepage")).click();
+        wd.findElement(By.name("homepage")).clear();
+        wd.findElement(By.name("homepage")).sendKeys(homepage);
+    }
+    private void inputEmails(InputEmails inputEmails) {
+        wd.findElement(By.name("email")).click();
+        wd.findElement(By.name("email")).clear();
+        wd.findElement(By.name("email")).sendKeys(inputEmails.getFirstEmail());
+        wd.findElement(By.name("email2")).clear();
+        wd.findElement(By.name("email2")).sendKeys(inputEmails.getSecondEmail());
+        wd.findElement(By.name("email3")).clear();
+        wd.findElement(By.name("email3")).sendKeys(inputEmails.getThirdEmail());
+    }
+    private void homeMobileWorkFaxNumber(InputNumbers inputNumbers) { //Ввод ввод номеров телефонов
+        wd.findElement(By.name("home")).click();
+        wd.findElement(By.name("home")).clear();
+        wd.findElement(By.name("home")).sendKeys(inputNumbers.getHomeNumber());
+        wd.findElement(By.name("mobile")).click();
+        wd.findElement(By.name("mobile")).clear();
+        wd.findElement(By.name("mobile")).sendKeys(inputNumbers.getMobileNumber());
+        wd.findElement(By.name("work")).click();
+        wd.findElement(By.name("work")).clear();
+        wd.findElement(By.name("work")).sendKeys(inputNumbers.getWorkNumber());
+        wd.findElement(By.name("fax")).click();
+        wd.findElement(By.name("fax")).clear();
+        wd.findElement(By.name("fax")).sendKeys(inputNumbers.getFaxNumber());
+    }
+    private void inputAddress(String address) {
+        wd.findElement(By.name("address")).click();
+        wd.findElement(By.name("address")).clear();
+        wd.findElement(By.name("address")).sendKeys(address);
+    }
+    private void inputCompany(String company) {
+        wd.findElement(By.name("company")).click();
+        wd.findElement(By.name("company")).clear();
+        wd.findElement(By.name("company")).sendKeys(company);
+    }
+    private void inputTitle(String title) {
+        wd.findElement(By.name("title")).click();
+        wd.findElement(By.name("title")).clear();
+        wd.findElement(By.name("title")).sendKeys(title);
+    }
+    private void inputNickname(String nickname) {
+        wd.findElement(By.name("nickname")).click();
+        wd.findElement(By.name("nickname")).clear();
+        wd.findElement(By.name("nickname")).sendKeys(nickname);
+    }
+    private void inputFirstMiddleLastName(InputNames inputNames) { //Ввод ФИО
+        wd.findElement(By.name("firstname")).click();
+        wd.findElement(By.name("firstname")).clear();
+        wd.findElement(By.name("firstname")).sendKeys(inputNames.getFirstName());
+        wd.findElement(By.name("middlename")).click();
+        wd.findElement(By.name("middlename")).clear();
+        wd.findElement(By.name("middlename")).sendKeys(inputNames.getMiddleName());
+        wd.findElement(By.name("lastname")).click();
+        wd.findElement(By.name("lastname")).clear();
+        wd.findElement(By.name("lastname")).sendKeys(inputNames.getThirdName());
+    }
+    private void createNewUser() {
+        wd.findElement(By.linkText("add new")).click();
+    }
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() throws Exception {
+        wd.quit();
+    }
+    private boolean isElementPresent(By by) {
+        try {
+            wd.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
         }
     }
+    private boolean isAlertPresent() {
+        try {
+            wd.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+}
