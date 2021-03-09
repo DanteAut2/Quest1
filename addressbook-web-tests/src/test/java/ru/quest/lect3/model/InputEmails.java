@@ -1,4 +1,4 @@
-package ru.quest.lect3;
+package ru.quest.lect3.model;
 
 public class InputEmails {
     private final String firstEmail;

@@ -8,8 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import ru.quest.lect3.*;
 import ru.quest.lect3.appmanager.ApplicationManager;
+import ru.quest.lect3.model.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -171,5 +171,21 @@ public class TestBase {
         } catch (NoAlertPresentException e) {
             return false;
         }
+    }
+
+    protected void allertAccept() {
+        wd.switchTo().alert().accept();
+    }
+
+    protected void delete() {
+        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    }
+
+    protected void choseFirstCheckBox() {
+        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input")).click();
+    }
+
+    protected void homepageTopBar() {
+        wd.get("http://localhost/addressbook/");
     }
 }

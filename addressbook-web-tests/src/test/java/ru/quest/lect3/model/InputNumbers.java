@@ -1,4 +1,4 @@
-package ru.quest.lect3;
+package ru.quest.lect3.model;
 
 public class InputNumbers {
     private final String homeNumber;
