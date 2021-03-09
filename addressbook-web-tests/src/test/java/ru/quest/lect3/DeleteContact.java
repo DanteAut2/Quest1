@@ -17,23 +17,47 @@ public class DeleteContact {
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
+    wd.get("http://localhost/addressbook/edit.php");
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testDeleteContact() throws Exception {
+    login();
+    homepageTopBar();
+    choseFirstCheckBox();
+    delete();
+    allertAccept();
+    logout();
+  }
+
+  private void logout() {
+    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void allertAccept() {
+    wd.switchTo().alert().accept();
+  }
+
+  private void delete() {
+    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+  }
+
+  private void choseFirstCheckBox() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input")).click();
+  }
+
+  private void homepageTopBar() {
     wd.get("http://localhost/addressbook/");
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.xpath("//input[@value='Login']")).click();
-    wd.findElement(By.linkText("home")).click();
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input")).click();
-    wd.findElement(By.xpath("//input[@value='Delete']")).click();
-    wd.switchTo().alert().accept();
-    wd.findElement(By.linkText("Logout")).click();
   }
 
   @AfterMethod(alwaysRun = true)
