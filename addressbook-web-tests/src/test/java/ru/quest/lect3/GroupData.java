@@ -1,4 +1,4 @@
-package ru.quest.lect3.model;
+package ru.quest.lect3;
 
 public class GroupData {
     private final String name;

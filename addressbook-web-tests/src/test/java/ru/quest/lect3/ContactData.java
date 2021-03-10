@@ -1,14 +1,14 @@
-package ru.quest.lect3.model;
+package ru.quest.lect3;
 
-public class InputNames {
+public class ContactData {
     private final String firstName;
     private final String middleName;
-    private final String thirdName;
+    private final String lastName;
 
-    public InputNames(String firstName, String middleName, String thirdName) {
+    public ContactData(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;
-        this.thirdName = thirdName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
@@ -19,7 +19,7 @@ public class InputNames {
         return middleName;
     }
 
-    public String getThirdName() {
-        return thirdName;
+    public String getLastName() {
+        return lastName;
     }
 }
