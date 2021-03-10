@@ -1,6 +1,7 @@
 package ru.quest.lect3.tests;
 
 import org.testng.annotations.Test;
+import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.*;
 
 public class ContactCreationTests extends TestBase {

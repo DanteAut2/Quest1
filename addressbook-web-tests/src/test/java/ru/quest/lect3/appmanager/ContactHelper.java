@@ -1,4 +1,4 @@
-package ru.quest.lect3.tests;
+package ru.quest.lect3.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -14,7 +14,6 @@ import ru.quest.lect3.model.*;
 import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
-    private WebDriver wd;
 
     public ContactHelper(WebDriver wd) {
         super(wd);

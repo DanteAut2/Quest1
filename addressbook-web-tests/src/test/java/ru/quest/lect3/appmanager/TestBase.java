@@ -1,4 +1,4 @@
-package ru.quest.lect3.tests;
+package ru.quest.lect3.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
