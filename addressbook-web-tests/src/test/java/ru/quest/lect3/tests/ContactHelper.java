@@ -20,13 +20,6 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() throws Exception {
-        wd = new FirefoxDriver();
-        wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wd.get("http://localhost/addressbook/edit.php");
-        login("admin", "secret");
-    }
 
     private void login(String login, String password) { //Логин на сайте
         wd.findElement(By.name("user")).clear();
@@ -151,10 +144,7 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.linkText("add new")).click();
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() throws Exception {
-        wd.quit();
-    }
+
 
     private boolean isElementPresent(By by) {
         try {

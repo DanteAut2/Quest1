@@ -17,7 +17,13 @@ public class TestBase {
 
     protected final ApplicationManager app = new ApplicationManager();
 
-    public ContactHelper getContactHelper() {
-        return contactHelper;
+    @BeforeMethod(alwaysRun = true)
+    public void setUp() throws Exception {
+        app.init();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() throws Exception {
+        app.stop();
     }
 }
