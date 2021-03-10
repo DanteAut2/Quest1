@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.quest.lect3.tests.ContactHelper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,8 @@ public class ApplicationManager {
     private SessionHelper sessioonHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    public ContactHelper contactHelper;
+
 
     public void init() {
         wd = new FirefoxDriver();
@@ -21,6 +24,7 @@ public class ApplicationManager {
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessioonHelper = new SessionHelper(wd);
+        contactHelper = new ContactHelper(wd);
         sessioonHelper.login("admin", "secret");
     }
 
