@@ -8,11 +8,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.quest.lect3.appmanager.HelperBase;
 import ru.quest.lect3.model.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class ContactHelper {
+public class ContactHelper extends HelperBase {
     private WebDriver wd;
 
     public ContactHelper(WebDriver wd) {
