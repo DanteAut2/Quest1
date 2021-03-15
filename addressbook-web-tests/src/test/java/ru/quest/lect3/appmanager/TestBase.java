@@ -10,12 +10,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.quest.lect3.appmanager.ApplicationManager;
 import ru.quest.lect3.model.*;
+import sun.plugin2.util.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager();
+    protected final ApplicationManager app = new ApplicationManager(BrowserType.DEFAULT);
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
