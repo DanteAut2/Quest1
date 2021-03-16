@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.quest.lect3.appmanager.HelperBase;
@@ -44,7 +45,7 @@ public class ContactHelper extends HelperBase {
     public void createNewUser() {
         wd.findElement(By.linkText("add new")).click();
     }
-    public void inputAllContactInfo(ContactData contactData) {
+    public void inputAllContactInfo(ContactData contactData, boolean creation) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
@@ -117,15 +118,13 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.name("phone2")).sendKeys(contactData.getSecondAddressHomeNumber());
         wd.findElement(By.name("notes")).clear();
         wd.findElement(By.name("notes")).sendKeys(contactData.getNotes());
-    }
 
-    private boolean isElementPresent(By by) {
-        try {
-            wd.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
+        if(creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
+
     }
 
     private boolean isAlertPresent() {
