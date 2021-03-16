@@ -159,4 +159,15 @@ public class ContactHelper extends HelperBase {
     public void updateNewInfo() {
         click(By.name("update"));
     }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createContact(ContactData contact, boolean b) {
+        createNewUser();
+        inputAllContactInfo(contact, b);
+        confirm();
+        homepage();
+    }
 }
