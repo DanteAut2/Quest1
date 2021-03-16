@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import sun.plugin2.util.BrowserType;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,19 +17,19 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     public ContactHelper contactHelper;
-    private int browser;
+    private String browser;
 
-    public ApplicationManager(int browser) {
+    public ApplicationManager(String browser) {
         this.browser = browser;
     }
 
 
     public void init() {
-        if (browser == BrowserType.MOZILLA) {
+        if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
-        } else if (browser == BrowserType.DEFAULT) {
+        } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        } else if (browser == BrowserType.INTERNET_EXPLORER) {
+        } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
 
