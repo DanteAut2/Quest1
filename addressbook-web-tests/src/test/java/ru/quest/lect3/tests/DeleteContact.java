@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.ContactData;
 
+import java.util.List;
+
 public class DeleteContact extends TestBase {
 
 
@@ -15,13 +17,13 @@ public class DeleteContact extends TestBase {
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("asdfas", "gdfagfa", "dsgdgf", "gdfgsd", "gdsgdsg", "gsddfgsd", "15","April","1984","12", "May","1974", "4563456", "24564"," 345634", "236456" ," dsfggdf" ,"gsdfgsdf", " dsgsd", "sdrgsdfg","gdsgdf","sdgdsg", "sdfgsdfg", "gsdfgsdf", "test1"), true);
         }
-        int before = app.getContactHelper().getContactCount();
-        app.contactHelper.choseCheckBox(before - 1);
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.contactHelper.choseCheckBox(before.size() - 1);
         app.contactHelper.delete();
         app.contactHelper.allertAccept();
         app.contactHelper.homepageTopBar();
-        int after = app.getContactHelper().getContactCount();
-        Assert.assertEquals(after, before - 1);
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size() - 1);
         app.contactHelper.logout();
     }
 }
