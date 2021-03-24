@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.GroupData;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class DeleteGroup extends TestBase {
@@ -23,7 +24,10 @@ public class DeleteGroup extends TestBase {
         Assert.assertEquals(after.size(), before.size() - 1);
 
         before.remove(before.size() - 1);
-            Assert.assertEquals(before, after);
+        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        Assert.assertEquals(before, after);
         app.logout();
     }
 
