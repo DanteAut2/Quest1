@@ -170,4 +170,8 @@ public class ContactHelper extends HelperBase {
         confirm();
         homepage();
     }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
 }
