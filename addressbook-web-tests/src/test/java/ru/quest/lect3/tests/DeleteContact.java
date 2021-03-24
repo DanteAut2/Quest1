@@ -16,7 +16,7 @@ public class DeleteContact extends TestBase {
             app.getContactHelper().createContact(new ContactData("asdfas", "gdfagfa", "dsgdgf", "gdfgsd", "gdsgdsg", "gsddfgsd", "15","April","1984","12", "May","1974", "4563456", "24564"," 345634", "236456" ," dsfggdf" ,"gsdfgsdf", " dsgsd", "sdrgsdfg","gdsgdf","sdgdsg", "sdfgsdfg", "gsdfgsdf", "test1"), true);
         }
         int before = app.getContactHelper().getContactCount();
-        app.contactHelper.choseFirstCheckBox();
+        app.contactHelper.choseCheckBox(before - 1);
         app.contactHelper.delete();
         app.contactHelper.allertAccept();
         app.contactHelper.homepageTopBar();

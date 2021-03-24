@@ -144,8 +144,8 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//input[@value='Delete']")).click();
     }
 
-    public void choseFirstCheckBox() {
-        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input")).click();
+    public void choseCheckBox(int indexContact) {
+        wd.findElements(By.name("selected[]")).get(indexContact).click();
     }
 
     public void homepageTopBar() {
