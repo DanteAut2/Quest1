@@ -1,6 +1,7 @@
 package ru.quest.lect3.model;
 
 public class ContactData {
+    private final String id;
     private final String firstName;
     private final String middleName;
     private final String thirdName;
@@ -28,7 +29,10 @@ public class ContactData {
     private String group;
 
 
-    public ContactData(String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
+
+
+    public ContactData(String id, String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
+        this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
         this.thirdName = thirdName;
@@ -55,6 +59,67 @@ public class ContactData {
         this.address = address;
         this.group = group;
     }
+
+
+
+    public ContactData(String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
+        this.id = null;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.thirdName = thirdName;
+        this.firstEmail = firstEmail;
+        this.secondEmail = secondEmail;
+        this.thirdEmail = thirdEmail;
+        this.bDayDay = bDayDay;
+        this.bDayMonth = bDayMonth;
+        this.bDayYear = bDayYear;
+        this.aDayDay = aDayDay;
+        this.aDayMonth = aDayMonth;
+        this.aDayYear = aDayYear;
+        this.homeNumber = homeNumber;
+        this.mobileNumber = mobileNumber;
+        this.workNumber = workNumber;
+        this.faxNumber = faxNumber;
+        this.secondAddress = secondAddress;
+        this.secondAddressHomeNumber = secondAddressHomeNumber;
+        this.notes = notes;
+        this.nickname = nickname;
+        this.title = title;
+        this.homepage = homepage;
+        this.company = company;
+        this.address = address;
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", thirdName='" + thirdName + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return thirdName != null ? thirdName.equals(that.thirdName) : that.thirdName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (thirdName != null ? thirdName.hashCode() : 0);
+        return result;
+    }
+
     public String getTitle() { return title; }
 
     public String getHomepage() { return homepage; }
@@ -141,34 +206,13 @@ public class ContactData {
 
     public String getNickname() { return nickname; }
 
+    public String getId() {
+        return id;
+    }
+
     public String getGroup() {
         return group;
     }
 
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        return middleName != null ? middleName.equals(that.middleName) : that.middleName == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
-        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
-        return result;
-    }
 }
 
