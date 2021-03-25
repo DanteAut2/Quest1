@@ -3,10 +3,9 @@ package ru.quest.lect3.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.quest.lect3.appmanager.TestBase;
-import ru.quest.lect3.model.*;
+import ru.quest.lect3.model.ContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {

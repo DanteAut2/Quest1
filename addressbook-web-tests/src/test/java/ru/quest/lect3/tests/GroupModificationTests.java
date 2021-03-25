@@ -6,7 +6,6 @@ import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase {
