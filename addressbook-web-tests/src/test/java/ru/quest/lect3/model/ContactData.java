@@ -1,7 +1,7 @@
 package ru.quest.lect3.model;
 
 public class ContactData {
-    private final String id;
+    private int id;
     private final String firstName;
     private final String middleName;
     private final String thirdName;
@@ -31,7 +31,7 @@ public class ContactData {
 
 
 
-    public ContactData(String id, String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
+    public ContactData(int id, String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
         this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -61,9 +61,32 @@ public class ContactData {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return thirdName != null ? thirdName.equals(that.thirdName) : that.thirdName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (thirdName != null ? thirdName.hashCode() : 0);
+        return result;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public ContactData(String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
-        this.id = null;
+        this.id = 0;
         this.firstName = firstName;
         this.middleName = middleName;
         this.thirdName = thirdName;
@@ -98,26 +121,6 @@ public class ContactData {
                 ", firstName='" + firstName + '\'' +
                 ", thirdName='" + thirdName + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        return thirdName != null ? thirdName.equals(that.thirdName) : that.thirdName == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (thirdName != null ? thirdName.hashCode() : 0);
-        return result;
     }
 
     public String getTitle() { return title; }
@@ -206,7 +209,7 @@ public class ContactData {
 
     public String getNickname() { return nickname; }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
