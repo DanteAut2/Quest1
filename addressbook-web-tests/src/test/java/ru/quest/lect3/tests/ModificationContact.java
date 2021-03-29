@@ -17,8 +17,8 @@ public class ModificationContact extends TestBase {
             app.getContactHelper().createContact(new ContactData("asdfas", "gdfagfa", "dsgdgf", "gdfgsd", "gdsgdsg", "gsddfgsd", "15","April","1984","12", "May","1974", "4563456", "24564"," 345634", "236456" ," dsfggdf" ,"gsdfgsdf", " dsgsd", "sdrgsdfg","gdsgdf","sdgdsg", "sdfgsdfg", "gsdfgsdf", "test1"), true);
         }
         List<ContactData> before = app.getContactHelper().getContactList();
-        app.contactHelper.choseCheckBox(before.size() - 1);
-        app.contactHelper.editContacktButton();
+
+        app.contactHelper.editContacktButton(before.size() - 1);
         ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "asdfas", "gdfagfa", "dsgdgf", "gdfgsd", "gdsgdsg", "gsddfgsd", "15","April","1984","12", "May","1974", "4563456", "24564"," 345634", "236456" ," dsfggdf" ,"gsdfgsdf", " dsgsd", "sdrgsdfg","gdsgdf","sdgdsg", "sdfgsdfg", "gsdfgsdf", null);
         app.contactHelper.inputAllContactInfo(contact, false);
         app.contactHelper.updateNewInfo();

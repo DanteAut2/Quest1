@@ -151,8 +151,8 @@ public class ContactHelper extends HelperBase {
         wd.get("http://localhost/addressbook/");
     }
 
-    public void editContacktButton() {
-        click(By.xpath("//img[@alt='Edit']"));
+    public void editContacktButton(int indexConntactEdit) {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(indexConntactEdit).click();
     }
 
     public void updateNewInfo() {
