@@ -12,6 +12,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void creatingNewUser() throws Exception {
+        app.contactHelper.homepageTopBar();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.contactHelper.createNewUser();
         ContactData contact = new ContactData("asdfas", "gdfagfa", "dsgdgf", "gdfgsd", "gdsgdsg", "gsddfgsd", "15","April","1984","12", "May","1974", "4563456", "24564"," 345634", "236456" ," dsfggdf" ,"gsdfgsdf", " dsgsd", "sdrgsdfg","gdsgdf","sdgdsg", "sdfgsdfg", "gsdfgsdf", "test1");
