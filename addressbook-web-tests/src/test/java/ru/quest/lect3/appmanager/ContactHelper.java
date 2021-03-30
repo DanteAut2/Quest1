@@ -1,17 +1,15 @@
 package ru.quest.lect3.appmanager;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import ru.quest.lect3.appmanager.HelperBase;
-import ru.quest.lect3.model.*;
+import ru.quest.lect3.model.ContactData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
 
