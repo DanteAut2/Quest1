@@ -1,12 +1,14 @@
 package ru.quest.lect3.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.GroupData;
+import ru.quest.lect3.model.Groups;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class DeleteGroup extends TestBase {
 
@@ -21,15 +23,12 @@ public class DeleteGroup extends TestBase {
     @Test
     public void testDeleteGroup() throws Exception {
 
-        Set<GroupData> before = app.group().all();
+        Groups before = app.group().all();
         GroupData deletedGroup = before.iterator().next();
         app.group().delete(deletedGroup);
-        Set<GroupData> after = app.group().all();
-        Assert.assertEquals(after.size(), before.size() - 1);
-
-        before.remove(deletedGroup);
-        Assert.assertEquals(before, after);
-
+        Groups after = app.group().all();
+        assertEquals(after.size(), before.size() - 1);
+        assertThat(after, equalTo(before.without(deletedGroup)));
     }
 
 
