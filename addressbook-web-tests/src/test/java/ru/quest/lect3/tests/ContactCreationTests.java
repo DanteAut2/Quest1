@@ -12,14 +12,14 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void creatingNewUser() throws Exception {
-        app.contactHelper.homepageTopBar();
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.contactHelper.createNewUser();
+        app.goTo().homePage();
+        List<ContactData> before = app.contact().list();
+        app.contact().createNewUser();
         ContactData contact = new ContactData("asdfas", "gdfagfa", "dsgdgf", "gdfgsd", "gdsgdsg", "gsddfgsd", "15","April","1984","12", "May","1974", "4563456", "24564"," 345634", "236456" ," dsfggdf" ,"gsdfgsdf", " dsgsd", "sdrgsdfg","gdsgdf","sdgdsg", "sdfgsdfg", "gsdfgsdf", "test1");
-        app.contactHelper.inputAllContactInfo(contact, true);
-        app.contactHelper.confirm();
-        app.contactHelper.homepage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().inputAllContactInfo(contact, true);
+        app.contact().confirm();
+        app.contact().homepage();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size() + 1);
 
         before.add(contact);

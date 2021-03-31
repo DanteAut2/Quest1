@@ -18,4 +18,14 @@ public class NavigationHelper extends HelperBase {
             click(By.linkText("groups"));
         }
     }
+
+    public void homePage() {
+        if (isElementPresent(By.tagName("strong"))
+                && wd.findElement(By.tagName("strong")).getText().equals("Number of results: ")
+                && isElementPresent(By.name("new"))) {
+            return;
+        } else {
+            click(By.linkText("home"));
+        }
+    }
 }
