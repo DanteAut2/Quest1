@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.quest.lect3.model.ContactData;
 import ru.quest.lect3.model.Contacts;
+import ru.quest.lect3.model.Groups;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -171,6 +172,7 @@ public class ContactHelper extends HelperBase {
         createNewUser();
         inputAllContactInfo(contact, b);
         confirm();
+        contactCache = null;
         homepage();
     }
 
@@ -179,6 +181,7 @@ public class ContactHelper extends HelperBase {
         editContacktButton();
         inputAllContactInfo(contact, false);
         updateNewInfo();
+        contactCache = null;
         homepageTopBar();
     }
 
@@ -187,6 +190,7 @@ public class ContactHelper extends HelperBase {
         choseCheckBox(index);
         delete();
         allertAccept();
+        contactCache = null;
         homepageTopBar();
     }
 
@@ -209,8 +213,13 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
+    private Contacts contactCache = null;
+
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactCache != null) {
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
         List<WebElement> elements = wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr"));
         elements.remove(0);
         for (WebElement element : elements) {
@@ -219,15 +228,16 @@ public class ContactHelper extends HelperBase {
             String lastName = cells.get(1).getText();
 
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstName(firstName).withThirdName(lastName));
+            contactCache.add(new ContactData().withId(id).withFirstName(firstName).withThirdName(lastName));
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 
     public void delete(ContactData contact) {
         choseCheckBoxById(contact.getId());
         delete();
         allertAccept();
+        contactCache = null;
         homepageTopBar();
 
     }
