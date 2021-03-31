@@ -156,8 +156,8 @@ public class ContactHelper extends HelperBase {
         wd.get("http://localhost/addressbook/");
     }
 
-    public void editContacktButton(int indexConntactEdit) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(indexConntactEdit).click();
+    public void editContacktButtonById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void updateNewInfo() {
@@ -176,7 +176,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modify(ContactData contact) {
-        editContacktButton(contact.getId());
+        editContacktButtonById(contact.getId());
         inputAllContactInfo(contact, false);
         updateNewInfo();
         homepageTopBar();
