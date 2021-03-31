@@ -30,8 +30,6 @@ public class ContactData {
 
 
     private String address;
-    private String group;
-
 
     @Override
     public boolean equals(Object o) {
@@ -40,17 +38,20 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
+        if (id != that.id) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         return thirdName != null ? thirdName.equals(that.thirdName) : that.thirdName == null;
     }
 
     @Override
     public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (thirdName != null ? thirdName.hashCode() : 0);
         return result;
     }
 
+    private String group;
 
 
     public ContactData withId(int id) {

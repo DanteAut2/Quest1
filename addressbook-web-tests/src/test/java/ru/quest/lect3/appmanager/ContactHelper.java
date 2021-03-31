@@ -9,7 +9,9 @@ import org.testng.Assert;
 import ru.quest.lect3.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -145,6 +147,11 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.name("selected[]")).get(indexContact).click();
     }
 
+    public void choseCheckBoxById(int id) {
+        wd.findElement(By.cssSelector("input[id='" + id +"']")).click();
+    }
+
+
     public void homepageTopBar() {
         wd.get("http://localhost/addressbook/");
     }
@@ -168,8 +175,8 @@ public class ContactHelper extends HelperBase {
         homepage();
     }
 
-    public void modify(int index, ContactData contact) {
-        editContacktButton(index);
+    public void modify(ContactData contact) {
+        editContacktButton(contact.getId());
         inputAllContactInfo(contact, false);
         updateNewInfo();
         homepageTopBar();
@@ -200,5 +207,28 @@ public class ContactHelper extends HelperBase {
             contacts.add(new ContactData().withId(id).withFirstName(firstName).withThirdName(lastName));
         }
         return contacts;
+    }
+
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
+        List<WebElement> elements = wd.findElements(By.xpath(".//*[@id='maintable']/tbody/tr"));
+        elements.remove(0);
+        for (WebElement element : elements) {
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+            String firstName = cells.get(2).getText();
+            String lastName = cells.get(1).getText();
+
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            contacts.add(new ContactData().withId(id).withFirstName(firstName).withThirdName(lastName));
+        }
+        return contacts;
+    }
+
+    public void delete(ContactData contact) {
+        choseCheckBoxById(contact.getId());
+        delete();
+        allertAccept();
+        homepageTopBar();
+
     }
 }
