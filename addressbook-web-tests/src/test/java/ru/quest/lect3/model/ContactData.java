@@ -1,31 +1,35 @@
 package ru.quest.lect3.model;
 
 public class ContactData {
-    private int id;
-    private final String firstName;
-    private final String middleName;
-    private final String thirdName;
-    private final String firstEmail;
-    private final String secondEmail;
-    private final String thirdEmail;
-    private final String bDayDay;
-    private final String bDayMonth;
-    private final String bDayYear;
-    private final String aDayDay;
-    private final String aDayMonth;
-    private final String aDayYear;
-    private final String homeNumber;
-    private final String mobileNumber;
-    private final String workNumber;
-    private final String faxNumber;
-    private final String secondAddress;
-    private final String secondAddressHomeNumber;
-    private final String notes;
-    private final String nickname;
-    private final String title;
-    private final String homepage;
-    private final String company;
-    private final String address;
+    private int id = Integer.MAX_VALUE;
+    private String firstName;
+    private String middleName;
+    private String thirdName;
+    private String firstEmail;
+    private String secondEmail;
+    private String thirdEmail;
+    private String bDayDay;
+    private String bDayMonth;
+    private String bDayYear;
+    private String aDayDay;
+    private String aDayMonth;
+    private String aDayYear;
+    private String homeNumber;
+    private String mobileNumber;
+    private String workNumber;
+    private String faxNumber;
+    private String secondAddress;
+    private String secondAddressHomeNumber;
+    private String notes;
+    private String nickname;
+    private String title;
+    private String homepage;
+    private String company;
+
+
+
+
+    private String address;
     private String group;
 
 
@@ -47,67 +51,161 @@ public class ContactData {
         return result;
     }
 
-    public ContactData(int id, String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.thirdName = thirdName;
-        this.firstEmail = firstEmail;
-        this.secondEmail = secondEmail;
-        this.thirdEmail = thirdEmail;
-        this.bDayDay = bDayDay;
-        this.bDayMonth = bDayMonth;
-        this.bDayYear = bDayYear;
-        this.aDayDay = aDayDay;
-        this.aDayMonth = aDayMonth;
-        this.aDayYear = aDayYear;
-        this.homeNumber = homeNumber;
-        this.mobileNumber = mobileNumber;
-        this.workNumber = workNumber;
-        this.faxNumber = faxNumber;
-        this.secondAddress = secondAddress;
-        this.secondAddressHomeNumber = secondAddressHomeNumber;
-        this.notes = notes;
-        this.nickname = nickname;
-        this.title = title;
-        this.homepage = homepage;
-        this.company = company;
-        this.address = address;
-        this.group = group;
-    }
 
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
 
-    public ContactData(String firstName, String middleName, String thirdName, String firstEmail, String secondEmail, String thirdEmail, String bDayDay, String bDayMonth, String bDayYear, String aDayDay, String aDayMonth, String aDayYear, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String secondAddress, String secondAddressHomeNumber, String notes, String nickname, String title, String homepage, String company, String address, String group) {
-        this.id = 0;
+    public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
+
+    }
+
+    public ContactData withMiddleName(String middleName) {
         this.middleName = middleName;
+        return this;
+
+    }
+
+    public ContactData withThirdName(String thirdName) {
         this.thirdName = thirdName;
+        return this;
+
+    }
+
+    public ContactData withFirstEmail(String firstEmail) {
         this.firstEmail = firstEmail;
+        return this;
+
+    }
+
+    public ContactData withSecondEmail(String secondEmail) {
         this.secondEmail = secondEmail;
+        return this;
+
+    }
+
+    public ContactData withThirdEmail(String thirdEmail) {
         this.thirdEmail = thirdEmail;
+        return this;
+
+    }
+
+    public ContactData withbDayDay(String bDayDay) {
         this.bDayDay = bDayDay;
+        return this;
+
+    }
+
+    public ContactData withbDayMonth(String bDayMonth) {
         this.bDayMonth = bDayMonth;
+        return this;
+
+    }
+
+    public ContactData withbDayYear(String bDayYear) {
         this.bDayYear = bDayYear;
+        return this;
+
+    }
+
+    public ContactData withaDayDay(String aDayDay) {
         this.aDayDay = aDayDay;
+        return this;
+
+    }
+
+    public ContactData withaDayMonth(String aDayMonth) {
         this.aDayMonth = aDayMonth;
+        return this;
+
+    }
+
+    public ContactData withaDayYear(String aDayYear) {
         this.aDayYear = aDayYear;
+        return this;
+
+    }
+
+    public ContactData withHomeNumber(String homeNumber) {
         this.homeNumber = homeNumber;
+        return this;
+
+    }
+
+    public ContactData withMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
+        return this;
+
+    }
+
+    public ContactData withWorkNumber(String workNumber) {
         this.workNumber = workNumber;
+        return this;
+
+    }
+
+    public ContactData withFaxNumber(String faxNumber) {
         this.faxNumber = faxNumber;
+        return this;
+
+    }
+
+    public ContactData withSecondAddress(String secondAddress) {
         this.secondAddress = secondAddress;
+        return this;
+
+    }
+
+    public ContactData withSecondAddressHomeNumber(String secondAddressHomeNumber) {
         this.secondAddressHomeNumber = secondAddressHomeNumber;
+        return this;
+
+    }
+
+    public ContactData withNotes(String notes) {
         this.notes = notes;
+        return this;
+
+    }
+
+    public ContactData withNickname(String nickname) {
         this.nickname = nickname;
+        return this;
+
+    }
+
+    public ContactData withTitle(String title) {
         this.title = title;
+        return this;
+
+    }
+
+    public ContactData withHomepage(String homepage) {
         this.homepage = homepage;
+        return this;
+
+    }
+
+    public ContactData withCompany(String company) {
         this.company = company;
+        return this;
+
+    }
+
+    public ContactData withAddress(String address) {
         this.address = address;
+        return this;
+
+    }
+
+    public ContactData withGroup(String group) {
         this.group = group;
+        return this;
+
     }
 
     @Override
