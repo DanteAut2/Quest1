@@ -26,6 +26,17 @@ public class ContactData {
     private String homepage;
     private String company;
     private String allPhones;
+    private String allEmails;
+    private String address;
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
 
     public String getAllPhones() {
         return allPhones;
@@ -36,8 +47,6 @@ public class ContactData {
         return this;
     }
 
-
-    private String address;
 
     @Override
     public boolean equals(Object o) {
