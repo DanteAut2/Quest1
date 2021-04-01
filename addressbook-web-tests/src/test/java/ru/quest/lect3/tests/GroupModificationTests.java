@@ -8,7 +8,6 @@ import ru.quest.lect3.model.Groups;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class GroupModificationTests extends TestBase {
 
@@ -21,7 +20,7 @@ public class GroupModificationTests extends TestBase {
     }
 
     @Test
-    public void testGroupModification () {
+    public void testGroupModification() {
 
         app.goTo().groupPage();
         Groups before = app.group().all();

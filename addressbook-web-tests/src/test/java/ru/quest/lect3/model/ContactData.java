@@ -25,8 +25,16 @@ public class ContactData {
     private String title;
     private String homepage;
     private String company;
+    private String allPhones;
 
+    public String getAllPhones() {
+        return allPhones;
+    }
 
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
 
 
     private String address;
@@ -218,13 +226,21 @@ public class ContactData {
                 '}';
     }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public String getHomepage() { return homepage; }
+    public String getHomepage() {
+        return homepage;
+    }
 
-    public String getCompany() { return company; }
+    public String getCompany() {
+        return company;
+    }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -302,7 +318,9 @@ public class ContactData {
         return notes;
     }
 
-    public String getNickname() { return nickname; }
+    public String getNickname() {
+        return nickname;
+    }
 
     public int getId() {
         return id;
