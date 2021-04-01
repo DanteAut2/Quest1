@@ -225,9 +225,9 @@ public class ContactHelper extends HelperBase {
             List<WebElement> cells = element.findElements(By.tagName("td"));
             String firstName = cells.get(2).getText();
             String lastName = cells.get(1).getText();
-
+            String[] phones = cells.get(5).getText().split("\n");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+            contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withHomeNumber(phones[0]).withMobileNumber(phones[1]).withWorkNumber(phones[2]));
         }
         return new Contacts(contactCache);
     }
@@ -238,7 +238,6 @@ public class ContactHelper extends HelperBase {
         allertAccept();
         contactCache = null;
         homepageTopBar();
-
     }
 
     public ContactData infoFromEditForm(ContactData contact) {
@@ -252,10 +251,15 @@ public class ContactHelper extends HelperBase {
         return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomeNumber(home).withMobileNumber(mobile).withWorkNumber(work);
     }
 
+
+
     private void initContactModificationById(int id) {
-        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
-        WebElement row = checkbox.findElement(By.xpath("./../.."));
-        List<WebElement> cells = row.findElements(By.tagName("td"));
-        cells.get(7).findElement(By.tagName("a")).click();
+//        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+//        WebElement row = checkbox.findElement(By.xpath("./../.."));
+//        List<WebElement> cells = row.findElements(By.tagName("td"));
+//        cells.get(7).findElement(By.tagName("a")).click();
+
+
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
     }
 }
