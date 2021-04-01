@@ -71,7 +71,7 @@ public class ContactData {
 
     }
 
-    public ContactData withThirdName(String thirdName) {
+    public ContactData withLastName(String thirdName) {
         this.thirdName = thirdName;
         return this;
 
