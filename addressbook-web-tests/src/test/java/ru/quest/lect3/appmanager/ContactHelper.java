@@ -151,13 +151,12 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
     }
 
-
     public void homepageTopBar() {
         wd.get("http://localhost/addressbook/");
     }
 
-    public void editContacktButton() {
-        wd.findElement(By.xpath("//img[@alt='Edit']")).click();
+    public void editContacktButtonById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
     }
 
     public void updateNewInfo() {
@@ -178,16 +177,15 @@ public class ContactHelper extends HelperBase {
 
     public void modify(ContactData contact) {
         choseCheckBoxById(contact.getId());
-        editContacktButton();
+        editContacktButtonById(contact.getId());
         inputAllContactInfo(contact, false);
         updateNewInfo();
         contactCache = null;
         homepageTopBar();
     }
 
-
-    public void delete(int index) {
-        choseCheckBox(index);
+    public void delete(ContactData contact) {
+        choseCheckBoxById(contact.getId());
         delete();
         allertAccept();
         contactCache = null;
@@ -235,13 +233,7 @@ public class ContactHelper extends HelperBase {
         return new Contacts(contactCache);
     }
 
-    public void delete(ContactData contact) {
-        choseCheckBoxById(contact.getId());
-        delete();
-        allertAccept();
-        contactCache = null;
-        homepageTopBar();
-    }
+
 
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
