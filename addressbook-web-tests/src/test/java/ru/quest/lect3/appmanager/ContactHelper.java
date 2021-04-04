@@ -18,19 +18,6 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-
-    private void login(String login, String password) { //Логин на сайте
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(login);
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(password);
-        wd.findElement(By.xpath("//input[@value='Login']")).click();
-    }
-
-    public void logout() {
-        wd.findElement(By.linkText("Logout")).click();
-    }
-
     public void homepage() {
         wd.findElement(By.linkText("home page")).click();
     }
@@ -117,6 +104,8 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.name("phone2")).sendKeys(contactData.getSecondAddressHomeNumber());
         wd.findElement(By.name("notes")).clear();
         wd.findElement(By.name("notes")).sendKeys(contactData.getNotes());
+        attach(By.name("photo"), contactData.getPhoto());
+        //       wd.findElement(By.name("photo"), contactData.getPhoto().getAbsolutePath());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -233,8 +222,6 @@ public class ContactHelper extends HelperBase {
         return new Contacts(contactCache);
     }
 
-
-
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -251,7 +238,6 @@ public class ContactHelper extends HelperBase {
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomeNumber(home).withMobileNumber(mobile).withWorkNumber(work).withSecondAddressHomeNumber(secondHome).withAddress(address).withFirstEmail(firstEmail).withSecondEmail(secondEmail).withThirdEmail(thirdEmail);
     }
-
 
     private void initContactModificationById(int id) {
 //        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
