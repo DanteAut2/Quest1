@@ -47,12 +47,6 @@ public class ContactHelper extends HelperBase {
         type(By.name("email2"), contactData.getSecondEmail());
         type(By.name("email3"), contactData.getThirdEmail());
         type(By.name("homepage"), contactData.getHomepage());
-        type(By.name("bday"), contactData.getbDayDay());
-        type(By.name("bmonth"), contactData.getbDayMonth());
-        type(By.name("byear"), contactData.getbDayYear());
-        type(By.name("aday"), contactData.getaDayDay());
-        type(By.name("amonth"), contactData.getaDayMonth());
-        type(By.name("ayear"), contactData.getaDayYear());
         type(By.name("address2"), contactData.getSecondAddress());
         type(By.name("phone2"), contactData.getSecondAddressHomeNumber());
         type(By.name("notes"), contactData.getNotes());
