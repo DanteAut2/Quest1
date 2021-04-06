@@ -30,6 +30,7 @@ public class ContactData {
     private String allPhones;
     private String allEmails;
     private String address;
+    private String group;
     private File photo;
 
     public File getPhoto() {
@@ -81,7 +82,7 @@ public class ContactData {
         return result;
     }
 
-    private String group;
+
 
 
     public ContactData withId(int id) {
