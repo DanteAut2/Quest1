@@ -23,30 +23,32 @@ public class ContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactsFromXml() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
-        String line = reader.readLine();
-        while (line != null) {
-            String[] split = line.split(";");
-            list.add(new Object[] {new ContactData().withFirstName(split[0]).withMiddleName(split[1]).withLastName(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5]).withAddress(split[6]).withHomeNumber(split[7])
-            .withMobileNumber(split[8]).withWorkNumber(split[9]).withFaxNumber(split[10]).withFirstEmail(split[11]).withSecondEmail(split[12]).withThirdEmail(split[13]).withHomepage(split[14]).withSecondAddress(split[15]).withSecondAddressHomeNumber(split[16])
-            .withNotes(split[17]).withGroup(split[18])});
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))) {
+            String line = reader.readLine();
+            while (line != null) {
+                String[] split = line.split(";");
+                list.add(new Object[] {new ContactData().withFirstName(split[0]).withMiddleName(split[1]).withLastName(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5]).withAddress(split[6]).withHomeNumber(split[7])
+                        .withMobileNumber(split[8]).withWorkNumber(split[9]).withFaxNumber(split[10]).withFirstEmail(split[11]).withSecondEmail(split[12]).withThirdEmail(split[13]).withHomepage(split[14]).withSecondAddress(split[15]).withSecondAddressHomeNumber(split[16])
+                        .withNotes(split[17]).withGroup(split[18])});
+                line = reader.readLine();
+            }
+            return list.iterator();
         }
-        return list.iterator();
     }
 
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
-        String json = "";
-        String line = reader.readLine();
-        while (line != null) {
-            json += line;
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+            String json = "";
+            String line = reader.readLine();
+            while (line != null) {
+                json += line;
+                line = reader.readLine();
+            }
+            Gson gson = new Gson();
+            List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
+            return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
         }
-        Gson gson = new Gson();
-        List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
-        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
 
     @Test(dataProvider = "validContactsFromJson")
