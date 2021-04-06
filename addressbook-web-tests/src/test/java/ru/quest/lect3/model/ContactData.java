@@ -1,35 +1,57 @@
 package ru.quest.lect3.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.File;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String firstName;
+    @Expose
     private String middleName;
+    @Expose
     private String thirdName;
+    @Expose
     private String firstEmail;
+    @Expose
     private String secondEmail;
+    @Expose
     private String thirdEmail;
+    @Expose
     private String bDayDay;
     private String bDayMonth;
     private String bDayYear;
     private String aDayDay;
     private String aDayMonth;
     private String aDayYear;
+    @Expose
     private String homeNumber;
+    @Expose
     private String mobileNumber;
+    @Expose
     private String workNumber;
+    @Expose
     private String faxNumber;
+    @Expose
     private String secondAddress;
+    @Expose
     private String secondAddressHomeNumber;
+    @Expose
     private String notes;
+    @Expose
     private String nickname;
+    @Expose
     private String title;
+    @Expose
     private String homepage;
+    @Expose
     private String company;
     private String allPhones;
     private String allEmails;
+    @Expose
     private String address;
+    @Expose
     private String group;
     private File photo;
 
