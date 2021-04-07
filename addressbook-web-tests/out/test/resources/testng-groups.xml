@@ -8,13 +8,4 @@
             <class name="ru.quest.lect3.tests.DeleteGroup" />
         </classes>
     </test>
-
-    <test name="Contacts">
-        <classes>
-            <class name="ru.quest.lect3.tests.ContactCreationTests"/>
-            <class name="ru.quest.lect3.tests.ModificationContact"/>
-            <class name="ru.quest.lect3.tests.DeleteContact"/>
-
-        </classes>
-    </test>
 </suite>
