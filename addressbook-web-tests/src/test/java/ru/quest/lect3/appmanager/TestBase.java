@@ -7,11 +7,11 @@ import org.testng.annotations.BeforeSuite;
 
 public class TestBase {
 
-    protected static final ApplicationManager app
-            = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+    protected static ApplicationManager app;
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws Exception {
+        app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
         app.init();
     }
 

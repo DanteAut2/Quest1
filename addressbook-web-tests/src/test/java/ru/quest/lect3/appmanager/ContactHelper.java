@@ -9,13 +9,21 @@ import org.testng.Assert;
 import ru.quest.lect3.model.ContactData;
 import ru.quest.lect3.model.Contacts;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class ContactHelper extends HelperBase {
 
+
+    private final Properties properties;
+
     public ContactHelper(WebDriver wd) {
         super(wd);
+        properties = new Properties();
     }
 
     public void homepage() {
@@ -26,30 +34,31 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
 
-
     public void createNewUser() {
         wd.findElement(By.linkText("add new")).click();
     }
 
-    public void inputAllContactInfo(ContactData contactData, boolean creation) {
-        type(By.name("firstname"), contactData.getFirstName());
-        type(By.name("middlename"), contactData.getMiddleName());
-        type(By.name("lastname"), contactData.getThirdName());
-        type(By.name("nickname"), contactData.getNickname());
-        type(By.name("title"), contactData.getTitle());
-        type(By.name("company"), contactData.getCompany());
-        type(By.name("address"), contactData.getAddress());
-        type(By.name("home"), contactData.getHomeNumber());
-        type(By.name("mobile"), contactData.getMobileNumber());
-        type(By.name("work"), contactData.getWorkNumber());
-        type(By.name("fax"), contactData.getFaxNumber());
-        type(By.name("email"), contactData.getFirstEmail());
-        type(By.name("email2"), contactData.getSecondEmail());
-        type(By.name("email3"), contactData.getThirdEmail());
-        type(By.name("homepage"), contactData.getHomepage());
-        type(By.name("address2"), contactData.getSecondAddress());
-        type(By.name("phone2"), contactData.getSecondAddressHomeNumber());
-        type(By.name("notes"), contactData.getNotes());
+    public void inputAllContactInfo(ContactData contactData, boolean creation) throws IOException {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        type(By.name(properties.getProperty("web.locatorFirstName")), contactData.getFirstName());
+        type(By.name(properties.getProperty("web.locatorMiddleName")), contactData.getMiddleName());
+        type(By.name(properties.getProperty("web.locatorLastname")), contactData.getThirdName());
+        type(By.name(properties.getProperty("web.locatorNickname")), contactData.getNickname());
+        type(By.name(properties.getProperty("web.locatorTitle")), contactData.getTitle());
+        type(By.name(properties.getProperty("web.locatorCompany")), contactData.getCompany());
+        type(By.name(properties.getProperty("web.locatorAddress")), contactData.getAddress());
+        type(By.name(properties.getProperty("web.locatorHome")), contactData.getHomeNumber());
+        type(By.name(properties.getProperty("web.locatorMobile")), contactData.getMobileNumber());
+        type(By.name(properties.getProperty("web.locatorWork")), contactData.getWorkNumber());
+        type(By.name(properties.getProperty("web.locatorFax")), contactData.getFaxNumber());
+        type(By.name(properties.getProperty("web.locatorEmail")), contactData.getFirstEmail());
+        type(By.name(properties.getProperty("web.locatorEmail2")), contactData.getSecondEmail());
+        type(By.name(properties.getProperty("web.locatorEmail3")), contactData.getThirdEmail());
+        type(By.name(properties.getProperty("web.locatorHomepage")), contactData.getHomepage());
+        type(By.name(properties.getProperty("web.locatorAddress2")), contactData.getSecondAddress());
+        type(By.name(properties.getProperty("web.locatorPhone2")), contactData.getSecondAddressHomeNumber());
+        type(By.name(properties.getProperty("web.locatorNotes")), contactData.getNotes());
         attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
@@ -77,10 +86,6 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//input[@value='Delete']")).click();
     }
 
-    public void choseCheckBox(int indexContact) {
-        wd.findElements(By.name("selected[]")).get(indexContact).click();
-    }
-
     public void choseCheckBoxById(int id) {
         wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
     }
@@ -97,11 +102,7 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public boolean isThereAContact() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
-    public void create(ContactData contact, boolean b) {
+    public void create(ContactData contact, boolean b) throws IOException {
         createNewUser();
         inputAllContactInfo(contact, b);
         confirm();
@@ -109,7 +110,7 @@ public class ContactHelper extends HelperBase {
         homepage();
     }
 
-    public void modify(ContactData contact) {
+    public void modify(ContactData contact) throws IOException {
         choseCheckBoxById(contact.getId());
         editContacktButtonById(contact.getId());
         inputAllContactInfo(contact, false);
@@ -169,27 +170,22 @@ public class ContactHelper extends HelperBase {
 
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
-        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
-        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
-        String home = wd.findElement(By.name("home")).getAttribute("value");
-        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
-        String work = wd.findElement(By.name("work")).getAttribute("value");
-        String secondHome = wd.findElement(By.name("phone2")).getAttribute("value");
-        String address = wd.findElement(By.name("address")).getAttribute("value");
-        String firstEmail = wd.findElement(By.name("email")).getAttribute("value");
-        String secondEmail = wd.findElement(By.name("email2")).getAttribute("value");
-        String thirdEmail = wd.findElement(By.name("email3")).getAttribute("value");
+        String firstname = wd.findElement(By.name(properties.getProperty("web.locatorFirstName"))).getAttribute("value");
+        String lastname = wd.findElement(By.name(properties.getProperty("web.locatorMiddleName"))).getAttribute("value");
+        String home = wd.findElement(By.name(properties.getProperty("web.locatorHome"))).getAttribute("value");
+        String mobile = wd.findElement(By.name(properties.getProperty("web.locatorMobile"))).getAttribute("value");
+        String work = wd.findElement(By.name(properties.getProperty("web.locatorWork"))).getAttribute("value");
+        String secondHome = wd.findElement(By.name(properties.getProperty("web.locatorPhone2"))).getAttribute("value");
+        String address = wd.findElement(By.name(properties.getProperty("web.locatorAddress2"))).getAttribute("value");
+        String firstEmail = wd.findElement(By.name(properties.getProperty("web.locatorEmail"))).getAttribute("value");
+        String secondEmail = wd.findElement(By.name(properties.getProperty("web.locatorEmail2"))).getAttribute("value");
+        String thirdEmail = wd.findElement(By.name(properties.getProperty("web.locatorEmail3"))).getAttribute("value");
 
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomeNumber(home).withMobileNumber(mobile).withWorkNumber(work).withSecondAddressHomeNumber(secondHome).withAddress(address).withFirstEmail(firstEmail).withSecondEmail(secondEmail).withThirdEmail(thirdEmail);
     }
 
     private void initContactModificationById(int id) {
-//        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
-//        WebElement row = checkbox.findElement(By.xpath("./../.."));
-//        List<WebElement> cells = row.findElements(By.tagName("td"));
-//        cells.get(7).findElement(By.tagName("a")).click();
-
 
         wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
     }

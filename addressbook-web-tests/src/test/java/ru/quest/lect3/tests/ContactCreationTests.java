@@ -7,9 +7,11 @@ import org.testng.annotations.Test;
 import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.ContactData;
 import ru.quest.lect3.model.Contacts;
-import ru.quest.lect3.model.GroupData;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +29,7 @@ public class ContactCreationTests extends TestBase {
             String line = reader.readLine();
             while (line != null) {
                 String[] split = line.split(";");
-                list.add(new Object[] {new ContactData().withFirstName(split[0]).withMiddleName(split[1]).withLastName(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5]).withAddress(split[6]).withHomeNumber(split[7])
+                list.add(new Object[]{new ContactData().withFirstName(split[0]).withMiddleName(split[1]).withLastName(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5]).withAddress(split[6]).withHomeNumber(split[7])
                         .withMobileNumber(split[8]).withWorkNumber(split[9]).withFaxNumber(split[10]).withFirstEmail(split[11]).withSecondEmail(split[12]).withThirdEmail(split[13]).withHomepage(split[14]).withSecondAddress(split[15]).withSecondAddressHomeNumber(split[16])
                         .withNotes(split[17]).withGroup(split[18])});
                 line = reader.readLine();
@@ -46,8 +48,9 @@ public class ContactCreationTests extends TestBase {
                 line = reader.readLine();
             }
             Gson gson = new Gson();
-            List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
-            return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+            List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
+            }.getType());
+            return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
         }
     }
 

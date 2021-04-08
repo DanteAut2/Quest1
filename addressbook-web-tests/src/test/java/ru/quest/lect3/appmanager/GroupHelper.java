@@ -6,12 +6,19 @@ import org.openqa.selenium.WebElement;
 import ru.quest.lect3.model.GroupData;
 import ru.quest.lect3.model.Groups;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 public class GroupHelper extends HelperBase {
 
+    private final Properties properties;
+
     public GroupHelper(WebDriver wd) {
         super(wd);
+        properties = new Properties();
     }
 
     public void returnToGroupPage() {
@@ -22,10 +29,12 @@ public class GroupHelper extends HelperBase {
         click(By.name("submit"));
     }
 
-    public void fillGroupForm(GroupData groupData) {
-        type(By.name("group_name"), groupData.getName());
-        type(By.name("group_header"), groupData.getHeader());
-        type(By.name("group_footer"), groupData.getFooter());
+    public void fillGroupForm(GroupData groupData) throws IOException {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        type(By.name(properties.getProperty("web.locatorGroup_name")), groupData.getName());
+        type(By.name(properties.getProperty("web.locatorGroup_header")), groupData.getHeader());
+        type(By.name(properties.getProperty("web.locatorGroup_footer")), groupData.getFooter());
     }
 
     public void initGroupCreation() {
@@ -48,7 +57,7 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void create(GroupData group) {
+    public void create(GroupData group) throws IOException {
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
@@ -56,17 +65,13 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-    public void modify(GroupData group) {
+    public void modify(GroupData group) throws IOException {
         selectGroupById(group.getId());
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
         groupCache = null;
         returnToGroupPage();
-    }
-
-    public boolean isThereAGroup() {
-        return isElementPresent(By.name("selected[]"));
     }
 
     public int count() {

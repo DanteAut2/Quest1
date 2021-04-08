@@ -6,13 +6,15 @@ import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.GroupData;
 import ru.quest.lect3.model.Groups;
 
+import java.io.IOException;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupModificationTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
+    public void ensurePreconditions() throws IOException {
         app.goTo().groupPage();
         if (app.group().all().size() == 0) {
             app.group().create(new GroupData().withName("test1"));
@@ -20,7 +22,7 @@ public class GroupModificationTests extends TestBase {
     }
 
     @Test
-    public void testGroupModification() {
+    public void testGroupModification() throws IOException {
 
         app.goTo().groupPage();
         Groups before = app.group().all();
