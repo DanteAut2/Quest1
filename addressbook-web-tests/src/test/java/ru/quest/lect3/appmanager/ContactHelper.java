@@ -2,28 +2,25 @@ package ru.quest.lect3.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.quest.lect3.model.ContactData;
 import ru.quest.lect3.model.Contacts;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class ContactHelper extends HelperBase {
 
 
-    private final Properties properties;
+    private final ApplicationManager app;
+    private Contacts contactCache = null;
 
-    public ContactHelper(WebDriver wd) {
-        super(wd);
-        properties = new Properties();
+    public ContactHelper(ApplicationManager app) {
+        super(app.wd);
+        this.app = app; // сохраняем ссылку на менеджера в помощнике
     }
 
     public void homepage() {
@@ -39,26 +36,24 @@ public class ContactHelper extends HelperBase {
     }
 
     public void inputAllContactInfo(ContactData contactData, boolean creation) throws IOException {
-        String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-        type(By.name(properties.getProperty("web.locatorFirstName")), contactData.getFirstName());
-        type(By.name(properties.getProperty("web.locatorMiddleName")), contactData.getMiddleName());
-        type(By.name(properties.getProperty("web.locatorLastname")), contactData.getThirdName());
-        type(By.name(properties.getProperty("web.locatorNickname")), contactData.getNickname());
-        type(By.name(properties.getProperty("web.locatorTitle")), contactData.getTitle());
-        type(By.name(properties.getProperty("web.locatorCompany")), contactData.getCompany());
-        type(By.name(properties.getProperty("web.locatorAddress")), contactData.getAddress());
-        type(By.name(properties.getProperty("web.locatorHome")), contactData.getHomeNumber());
-        type(By.name(properties.getProperty("web.locatorMobile")), contactData.getMobileNumber());
-        type(By.name(properties.getProperty("web.locatorWork")), contactData.getWorkNumber());
-        type(By.name(properties.getProperty("web.locatorFax")), contactData.getFaxNumber());
-        type(By.name(properties.getProperty("web.locatorEmail")), contactData.getFirstEmail());
-        type(By.name(properties.getProperty("web.locatorEmail2")), contactData.getSecondEmail());
-        type(By.name(properties.getProperty("web.locatorEmail3")), contactData.getThirdEmail());
-        type(By.name(properties.getProperty("web.locatorHomepage")), contactData.getHomepage());
-        type(By.name(properties.getProperty("web.locatorAddress2")), contactData.getSecondAddress());
-        type(By.name(properties.getProperty("web.locatorPhone2")), contactData.getSecondAddressHomeNumber());
-        type(By.name(properties.getProperty("web.locatorNotes")), contactData.getNotes());
+        type(By.name(app.getProperty("web.locatorFirstName")), contactData.getFirstName());
+        type(By.name(app.getProperty("web.locatorMiddleName")), contactData.getMiddleName());
+        type(By.name(app.getProperty("web.locatorLastname")), contactData.getThirdName());
+        type(By.name(app.getProperty("web.locatorNickname")), contactData.getNickname());
+        type(By.name(app.getProperty("web.locatorTitle")), contactData.getTitle());
+        type(By.name(app.getProperty("web.locatorCompany")), contactData.getCompany());
+        type(By.name(app.getProperty("web.locatorAddress")), contactData.getAddress());
+        type(By.name(app.getProperty("web.locatorHome")), contactData.getHomeNumber());
+        type(By.name(app.getProperty("web.locatorMobile")), contactData.getMobileNumber());
+        type(By.name(app.getProperty("web.locatorWork")), contactData.getWorkNumber());
+        type(By.name(app.getProperty("web.locatorFax")), contactData.getFaxNumber());
+        type(By.name(app.getProperty("web.locatorEmail")), contactData.getFirstEmail());
+        type(By.name(app.getProperty("web.locatorEmail2")), contactData.getSecondEmail());
+        type(By.name(app.getProperty("web.locatorEmail3")), contactData.getThirdEmail());
+        type(By.name(app.getProperty("web.locatorHomepage")), contactData.getHomepage());
+        type(By.name(app.getProperty("web.locatorAddress2")), contactData.getSecondAddress());
+        type(By.name(app.getProperty("web.locatorPhone2")), contactData.getSecondAddressHomeNumber());
+        type(By.name(app.getProperty("web.locatorNotes")), contactData.getNotes());
         attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
@@ -146,8 +141,6 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    private Contacts contactCache = null;
-
     public Contacts all() {
         if (contactCache != null) {
             return new Contacts(contactCache);
@@ -170,16 +163,16 @@ public class ContactHelper extends HelperBase {
 
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
-        String firstname = wd.findElement(By.name(properties.getProperty("web.locatorFirstName"))).getAttribute("value");
-        String lastname = wd.findElement(By.name(properties.getProperty("web.locatorMiddleName"))).getAttribute("value");
-        String home = wd.findElement(By.name(properties.getProperty("web.locatorHome"))).getAttribute("value");
-        String mobile = wd.findElement(By.name(properties.getProperty("web.locatorMobile"))).getAttribute("value");
-        String work = wd.findElement(By.name(properties.getProperty("web.locatorWork"))).getAttribute("value");
-        String secondHome = wd.findElement(By.name(properties.getProperty("web.locatorPhone2"))).getAttribute("value");
-        String address = wd.findElement(By.name(properties.getProperty("web.locatorAddress2"))).getAttribute("value");
-        String firstEmail = wd.findElement(By.name(properties.getProperty("web.locatorEmail"))).getAttribute("value");
-        String secondEmail = wd.findElement(By.name(properties.getProperty("web.locatorEmail2"))).getAttribute("value");
-        String thirdEmail = wd.findElement(By.name(properties.getProperty("web.locatorEmail3"))).getAttribute("value");
+        String firstname = wd.findElement(By.name(app.getProperty("web.locatorFirstName"))).getAttribute("value");
+        String lastname = wd.findElement(By.name(app.getProperty("web.locatorLastname"))).getAttribute("value");
+        String home = wd.findElement(By.name(app.getProperty("web.locatorHome"))).getAttribute("value");
+        String mobile = wd.findElement(By.name(app.getProperty("web.locatorMobile"))).getAttribute("value");
+        String work = wd.findElement(By.name(app.getProperty("web.locatorWork"))).getAttribute("value");
+        String secondHome = wd.findElement(By.name(app.getProperty("web.locatorPhone2"))).getAttribute("value");
+        String address = wd.findElement(By.name(app.getProperty("web.locatorAddress"))).getAttribute("value");
+        String firstEmail = wd.findElement(By.name(app.getProperty("web.locatorEmail"))).getAttribute("value");
+        String secondEmail = wd.findElement(By.name(app.getProperty("web.locatorEmail2"))).getAttribute("value");
+        String thirdEmail = wd.findElement(By.name(app.getProperty("web.locatorEmail3"))).getAttribute("value");
 
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomeNumber(home).withMobileNumber(mobile).withWorkNumber(work).withSecondAddressHomeNumber(secondHome).withAddress(address).withFirstEmail(firstEmail).withSecondEmail(secondEmail).withThirdEmail(thirdEmail);

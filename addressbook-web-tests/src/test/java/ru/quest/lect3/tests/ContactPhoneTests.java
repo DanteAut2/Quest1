@@ -11,6 +11,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactPhoneTests extends TestBase {
+    public static String cleaned(String phone) {
+        return phone.replaceAll("\\s+", "").replaceAll("[-()]", "");
+    }
+
     @Test
     public void testContactPhones() {
         app.goTo().homePage();
@@ -28,10 +32,6 @@ public class ContactPhoneTests extends TestBase {
 
     private String mergePhones(ContactData contact) {
         return Arrays.asList(contact.getHomeNumber(), contact.getMobileNumber(), contact.getWorkNumber(), contact.getSecondAddressHomeNumber()).stream().filter((s) -> !s.equals("")).map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
-    }
-
-    public static String cleaned(String phone) {
-        return phone.replaceAll("\\s+", "").replaceAll("[-()]", "");
     }
 
 }

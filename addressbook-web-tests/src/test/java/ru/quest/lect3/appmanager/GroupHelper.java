@@ -1,24 +1,21 @@
 package ru.quest.lect3.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.quest.lect3.model.GroupData;
 import ru.quest.lect3.model.Groups;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 
 public class GroupHelper extends HelperBase {
 
-    private final Properties properties;
+    private final ApplicationManager app;
+    private Groups groupCache = null;
 
-    public GroupHelper(WebDriver wd) {
-        super(wd);
-        properties = new Properties();
+    public GroupHelper(ApplicationManager app) {
+        super(app.wd);
+        this.app = app; // сохраняем ссылку на менеджера в помощнике
     }
 
     public void returnToGroupPage() {
@@ -30,11 +27,9 @@ public class GroupHelper extends HelperBase {
     }
 
     public void fillGroupForm(GroupData groupData) throws IOException {
-        String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-        type(By.name(properties.getProperty("web.locatorGroup_name")), groupData.getName());
-        type(By.name(properties.getProperty("web.locatorGroup_header")), groupData.getHeader());
-        type(By.name(properties.getProperty("web.locatorGroup_footer")), groupData.getFooter());
+        type(By.name(app.getProperty("web.locatorGroup_name")), groupData.getName());
+        type(By.name(app.getProperty("web.locatorGroup_header")), groupData.getHeader());
+        type(By.name(app.getProperty("web.locatorGroup_footer")), groupData.getFooter());
     }
 
     public void initGroupCreation() {
@@ -77,8 +72,6 @@ public class GroupHelper extends HelperBase {
     public int count() {
         return wd.findElements(By.name("selected[]")).size();
     }
-
-    private Groups groupCache = null;
 
     public Groups all() {
         if (groupCache != null) {

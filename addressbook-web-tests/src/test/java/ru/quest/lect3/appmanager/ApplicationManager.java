@@ -17,10 +17,10 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     private final Properties properties;
     public WebDriver wd;
+    public ContactHelper contactHelper;
     private SessionHelper sessioonHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
-    public ContactHelper contactHelper;
     private String browser;
 
     public ApplicationManager(String browser) throws IOException {
@@ -28,6 +28,9 @@ public class ApplicationManager {
         properties = new Properties();
     }
 
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
@@ -42,10 +45,10 @@ public class ApplicationManager {
 
         wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
-        groupHelper = new GroupHelper(wd);
+        groupHelper = new GroupHelper(this);
         navigationHelper = new NavigationHelper(wd);
         sessioonHelper = new SessionHelper(wd);
-        contactHelper = new ContactHelper(wd);
+        contactHelper = new ContactHelper(this);
         sessioonHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 

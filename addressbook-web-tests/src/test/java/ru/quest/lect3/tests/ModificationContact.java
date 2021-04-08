@@ -14,7 +14,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ModificationContact extends TestBase {
 
 
-
     @BeforeMethod
     public void ensurePreconditions() throws IOException {
         app.goTo().homePage();
