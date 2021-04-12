@@ -21,20 +21,20 @@ public class DbConnectionTest {
             while (rsGroups.next()) {
                 groups.add (new GroupData().withId(rsGroups.getInt("group_id")).withName(rsGroups.getString("group_name")).withHeader(rsGroups.getString("group_header")).withFooter(rsGroups.getString("group_footer")));
             }
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=");
-            Statement stContacts = conn.createStatement();
-            ResultSet rsContacts = stContacts.executeQuery("select user_id,firstname,lastname from users");
-            Contacts contacts = new Contacts();
-            while (rsContacts.next()) {
-                contacts.add (new ContactData().withId(rsContacts.getInt("user_id")).withFirstName(rsContacts.getString("firstname")).withLastName(rsContacts.getString("lastname")));
-            }
-            rsContacts.close();
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=");
+//            Statement stContacts = conn.createStatement();
+//            ResultSet rsContacts = stContacts.executeQuery("select user_id,firstname,lastname from users");
+//            Contacts contacts = new Contacts();
+//            while (rsContacts.next()) {
+//                contacts.add (new ContactData().withId(rsContacts.getInt("user_id")).withFirstName(rsContacts.getString("firstname")).withLastName(rsContacts.getString("lastname")));
+//            }
+//            rsContacts.close();
             rsGroups.close();
             stGroups.close();
-            stContacts.close();
+//            stContacts.close();
             conn.close();
             System.out.println(groups);
-            System.out.println(contacts);
+//            System.out.println(contacts);
             // Do something with the Connection
 
         } catch (SQLException ex) {
