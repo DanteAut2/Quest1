@@ -1,66 +1,105 @@
 package ru.quest.lect3.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name = "firstname")
     private String firstName;
     @Expose
+    @Transient
     private String middleName;
     @Expose
+    @Column(name = "lastname")
     private String thirdName;
     @Expose
+    @Transient
     private String firstEmail;
     @Expose
+    @Transient
     private String secondEmail;
     @Expose
+    @Transient
     private String thirdEmail;
     @Expose
+    @Transient
     private String bDayDay;
+    @Transient
     private String bDayMonth;
+    @Transient
     private String bDayYear;
+    @Transient
     private String aDayDay;
+    @Transient
     private String aDayMonth;
+    @Transient
     private String aDayYear;
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String homeNumber;
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobileNumber;
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String workNumber;
     @Expose
+    @Transient
     private String faxNumber;
     @Expose
+    @Transient
     private String secondAddress;
     @Expose
+    @Transient
     private String secondAddressHomeNumber;
     @Expose
+    @Transient
     private String notes;
     @Expose
+    @Transient
     private String nickname;
     @Expose
+    @Transient
     private String title;
     @Expose
+    @Transient
     private String homepage;
     @Expose
+    @Transient
     private String company;
+    @Transient
     private String allPhones;
+    @Transient
     private String allEmails;
     @Expose
+    @Transient
     private String address;
     @Expose
+    @Transient
     private String group;
-    private File photo;
+    @Column(name = "photo")
+    @Type(type = "text")
+    private String photo;
 
     public File getPhoto() {
-        return photo;
+        return new File (photo);
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
