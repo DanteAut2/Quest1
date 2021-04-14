@@ -31,7 +31,7 @@ public class ModificationContact extends TestBase {
     @Test
     public void testContactModification() throws IOException {
 
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         ContactData modifiedContact = before.iterator().next();
 
         ContactData contact = new ContactData().withId(modifiedContact.getId())
@@ -43,7 +43,7 @@ public class ModificationContact extends TestBase {
                 .withSecondAddressHomeNumber("6435634").withNotes("gdgsd").withHomepage("gdsdfgs");
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
 }
