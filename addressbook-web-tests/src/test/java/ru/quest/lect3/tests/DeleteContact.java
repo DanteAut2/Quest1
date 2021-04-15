@@ -22,7 +22,7 @@ public class DeleteContact extends TestBase {
                     .withSecondEmail("gdsjkfs").withThirdEmail("fjsdfj").withbDayDay("11").withbDayMonth("May").withbDayYear("1996")
                     .withaDayDay("12").withaDayMonth("June").withaDayYear("1994").withHomeNumber("45345").withMobileNumber("5436534")
                     .withWorkNumber("63463").withFaxNumber("345734").withSecondAddress("hfshs").withSecondAddressHomeNumber("6435634")
-                    .withNotes("gdgsd").withHomepage("gdsdfgs").withGroup("test1"), true);
+                    .withNotes("gdgsd").withHomepage("gdsdfgs"), true);
         }
     }
 

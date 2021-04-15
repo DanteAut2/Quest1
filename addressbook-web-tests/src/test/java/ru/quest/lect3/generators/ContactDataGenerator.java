@@ -44,7 +44,7 @@ public class ContactDataGenerator {
             contacts.add(new ContactData().withFirstName(String.format("firstname %s", i)).withMiddleName(String.format("middlename %s", i)).withLastName(String.format("lastname %s", i)).withNickname(String.format("nickname %s", i)).withTitle(String.format("title %s", i))
                     .withCompany(String.format("company %s", i)).withAddress(String.format("address %s", i)).withHomeNumber(String.format("88005553535 %s", i)).withMobileNumber(String.format("123123 %s", i)).withWorkNumber(String.format("3452335 %s", i)).withFaxNumber(String.format("4666666 %s", i))
                     .withFirstEmail(String.format("email111 %s", i)).withSecondEmail(String.format("email222 %s", i)).withThirdEmail(String.format("email333 %s", i)).withHomepage(String.format("homepage %s", i)).withSecondEmail(String.format("secondemail %s", i))
-                    .withSecondAddress(String.format("secondaddress %s", i)).withSecondAddressHomeNumber(String.format("1245325 %s", i)).withNotes(String.format("notes %s", i)).withGroup(String.format("test%s", i)).withPhoto(new File(String.format("src/test/resources/stru.png"))));
+                    .withSecondAddress(String.format("secondaddress %s", i)).withSecondAddressHomeNumber(String.format("1245325 %s", i)).withNotes(String.format("notes %s", i)).withPhoto(new File(String.format("src/test/resources/stru.png"))));
         }
         return contacts;
     }

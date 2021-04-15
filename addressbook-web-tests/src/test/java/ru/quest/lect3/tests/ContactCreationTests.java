@@ -32,7 +32,7 @@ public class ContactCreationTests extends TestBase {
                 String[] split = line.split(";");
                 list.add(new Object[]{new ContactData().withFirstName(split[0]).withMiddleName(split[1]).withLastName(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5]).withAddress(split[6]).withHomeNumber(split[7])
                         .withMobileNumber(split[8]).withWorkNumber(split[9]).withFaxNumber(split[10]).withFirstEmail(split[11]).withSecondEmail(split[12]).withThirdEmail(split[13]).withHomepage(split[14]).withSecondAddress(split[15]).withSecondAddressHomeNumber(split[16])
-                        .withNotes(split[17]).withGroup(split[18])});
+                        .withNotes(split[17])});
                 line = reader.readLine();
             }
             return list.iterator();
