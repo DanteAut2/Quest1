@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import ru.quest.lect3.appmanager.TestBase;
 import ru.quest.lect3.model.ContactData;
 import ru.quest.lect3.model.Contacts;
+import ru.quest.lect3.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -56,6 +57,9 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContactsFromJson")
     public void creatingNewUser(ContactData contact) throws Exception {
+        Groups groups = app.db().groups();
+        File photo = new File("src/test/resources/stru.png");
+        ContactData newContact = new ContactData().withFirstName("testName").withLastName("testSurname").withPhoto(photo).inGroup(groups.iterator().next());
         app.goTo().homePage();
         Contacts before = app.db().contacts();
         app.contact().createNewUser();
