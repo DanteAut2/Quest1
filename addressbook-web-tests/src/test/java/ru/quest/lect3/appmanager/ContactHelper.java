@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.quest.lect3.model.ContactData;
 import ru.quest.lect3.model.Contacts;
+import ru.quest.lect3.model.GroupData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -184,5 +185,35 @@ public class ContactHelper extends HelperBase {
     private void initContactModificationById(int id) {
 
         wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
+    }
+
+    public void selectContactCheckbox(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void selectContactCheckboxById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
+    public void addContactToGroup(ContactData contactData, GroupData groupData) {
+
+        selectContactCheckboxById(contactData.getId());
+        selectGroupFromListToAdd(groupData.getId());
+        addToGroupButton();
+        goToGroupPageAfterAddingRemovingContact();
+        contactCache = null;
+    }
+
+    private void addToGroupButton() {
+        wd.findElement(By.name("add")).click();
+    }
+
+    public void goToGroupPageAfterAddingRemovingContact() {
+        wd.findElement(By.partialLinkText("group page")).click();
+        //wd.findElement(By.cssSelector(String.format("a[href='./?group=%s']", id))).click();
+    }
+
+    public void selectGroupFromListToAdd(int groupId) {
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(groupId));
     }
 }
