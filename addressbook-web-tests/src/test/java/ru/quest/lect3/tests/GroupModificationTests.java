@@ -23,12 +23,11 @@ public class GroupModificationTests extends TestBase {
 
     @Test
     public void testGroupModification() throws IOException {
-
         app.goTo().groupPage();
         Groups before = app.db().groups();
         GroupData modifiedGroup = before.iterator().next();
         GroupData group = new GroupData()
-                .withId(modifiedGroup.getId()).withName("test1").withHeader(null).withFooter(null);
+                .withId(modifiedGroup.getId()).withName("test1").withHeader("header1").withFooter("footer123");
         app.goTo().groupPage();
         app.group().modify(group);
         assertThat(app.group().count(), equalTo(before.size()));

@@ -23,6 +23,14 @@ public class GroupData {
     @Expose
     @Column(name = "group_name")
     private String name;
+    @Expose
+    @Column(name = "group_header")
+    @Type(type = "text")
+    private String header;
+    @Expose
+    @Column(name = "group_footer")
+    @Type(type = "text")
+    private String footer;
 
     @Override
     public boolean equals(Object o) {
@@ -38,6 +46,16 @@ public class GroupData {
     }
 
     @Override
+    public String toString() {
+        return "GroupData{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", header='" + header + '\'' +
+                ", footer='" + footer + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
@@ -45,15 +63,6 @@ public class GroupData {
         result = 31 * result + (footer != null ? footer.hashCode() : 0);
         return result;
     }
-
-    @Expose
-    @Column(name = "group_header")
-    @Type(type = "text")
-    private String header;
-    @Expose
-    @Column(name = "group_footer")
-    @Type(type = "text")
-    private String footer;
 
     public int getId() {
         return id;
@@ -77,14 +86,6 @@ public class GroupData {
     public GroupData withFooter(String footer) {
         this.footer = footer;
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return "GroupData{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
     }
 
     public String getName() {
