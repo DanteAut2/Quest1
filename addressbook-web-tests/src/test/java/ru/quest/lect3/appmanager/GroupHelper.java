@@ -15,7 +15,7 @@ public class GroupHelper extends HelperBase {
 
     public GroupHelper(ApplicationManager app) {
         super(app.wd);
-        this.app = app; // сохраняем ссылку на менеджера в помощнике
+        this.app = app;
     }
 
     public void returnToGroupPage() {

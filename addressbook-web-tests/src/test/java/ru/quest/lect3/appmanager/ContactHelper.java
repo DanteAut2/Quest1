@@ -21,7 +21,7 @@ public class ContactHelper extends HelperBase {
 
     public ContactHelper(ApplicationManager app) {
         super(app.wd);
-        this.app = app; // сохраняем ссылку на менеджера в помощнике
+        this.app = app;
     }
 
     public void homepage() {
@@ -177,18 +177,16 @@ public class ContactHelper extends HelperBase {
         String firstEmail = wd.findElement(By.name(app.getProperty("web.locatorEmail"))).getAttribute("value");
         String secondEmail = wd.findElement(By.name(app.getProperty("web.locatorEmail2"))).getAttribute("value");
         String thirdEmail = wd.findElement(By.name(app.getProperty("web.locatorEmail3"))).getAttribute("value");
-
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomeNumber(home).withMobileNumber(mobile).withWorkNumber(work).withSecondAddressHomeNumber(secondHome).withAddress(address).withFirstEmail(firstEmail).withSecondEmail(secondEmail).withThirdEmail(thirdEmail);
     }
 
-    private void initContactModificationById(int id) {
-
-        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
+    public void removeFromGroupButton() {
+        wd.findElement(By.name("remove")).click();
     }
 
-    public void selectContactCheckbox(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
+    private void initContactModificationById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
     }
 
     public void selectContactCheckboxById(int id) {
@@ -210,7 +208,17 @@ public class ContactHelper extends HelperBase {
 
     public void goToGroupPageAfterAddingRemovingContact() {
         wd.findElement(By.partialLinkText("group page")).click();
-        //wd.findElement(By.cssSelector(String.format("a[href='./?group=%s']", id))).click();
+    }
+
+    public void removeContactFromGroup(ContactData contact, GroupData groupData) {
+        selectContactCheckboxById(contact.getId());
+        removeFromGroupButton();
+        goToGroupPageAfterAddingRemovingContact();
+        contactCache = null;
+    }
+
+    public void selectGroupFromList(int groupId) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(groupId));
     }
 
     public void selectGroupFromListToAdd(int groupId) {

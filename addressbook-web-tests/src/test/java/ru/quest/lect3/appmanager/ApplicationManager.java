@@ -52,10 +52,7 @@ public class ApplicationManager {
         sessioonHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(this);
         sessioonHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
-
-
     }
-
 
     public void stop() {
         wd.quit();
