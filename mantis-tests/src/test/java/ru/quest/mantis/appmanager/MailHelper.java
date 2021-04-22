@@ -1,5 +1,6 @@
 package ru.quest.mantis.appmanager;
 
+
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 import ru.quest.mantis.model.MailMessage;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MailHelper {
+
     private ApplicationManager app;
     private final Wiser wiser;
 
@@ -26,13 +28,14 @@ public class MailHelper {
                 return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());
             }
             try {
-                Thread.sleep(10000);
+                Thread.sleep(1000);// wait 1000 milliseconds
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        throw new Error("No mail :(");
+        throw new Error("No mail:(");
     }
+
     public static MailMessage toModelMail(WiserMessage m) {
         try {
             MimeMessage mm = m.getMimeMessage();
@@ -49,8 +52,10 @@ public class MailHelper {
     public void start() {
         wiser.start();
     }
+
     public void stop() {
         wiser.stop();
     }
+
 
 }

@@ -78,9 +78,15 @@ public class JamesHelper {
 
         // first attempt
         readUntil("Login id:");
-        write("root");
+        write(login);
         readUntil("Password");
-        write("root");
+        write(password);
+
+    /*//second
+    readUntil("Login id:");
+    write(login);
+    readUntil("Password");
+    write(password);*/
 
         //read welcome message
         readUntil("Welcome "+login+". HELP for a list of commands");

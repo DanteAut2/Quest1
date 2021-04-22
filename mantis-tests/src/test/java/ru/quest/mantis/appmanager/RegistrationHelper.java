@@ -2,8 +2,9 @@ package ru.quest.mantis.appmanager;
 
 import org.openqa.selenium.By;
 
-public class RegistrationHelper extends HelperBase{
+import java.time.Duration;
 
+public class RegistrationHelper extends HelperBase {
 
     public RegistrationHelper(ApplicationManager app) {
         super(app);
@@ -13,7 +14,9 @@ public class RegistrationHelper extends HelperBase{
         wd.get(app.getProperty("web.baseUrl") + "/signup_page.php");
         type(By.name("username"), username);
         type(By.name("email"), email);
-        click(By.cssSelector("input[type='submit']"));
+        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        click(By.cssSelector("input[type='Submit']"));
+
     }
 
     public void finish(String confirmationLink, String password) {

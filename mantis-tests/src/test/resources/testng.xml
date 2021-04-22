@@ -5,6 +5,7 @@
         <classes>
             <class name="ru.quest.mantis.tests.LoginTests"/>
             <class name="ru.quest.mantis.tests.RegistrationTests"/>
+            <class name="ru.quest.mantis.tests.ChangePasswordForUser"/>
         </classes>
     </test>
 </suite>
