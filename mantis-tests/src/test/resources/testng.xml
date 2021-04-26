@@ -6,6 +6,7 @@
             <class name="ru.quest.mantis.tests.LoginTests"/>
             <class name="ru.quest.mantis.tests.RegistrationTests"/>
             <class name="ru.quest.mantis.tests.ChangePasswordForUser"/>
+            <class name="ru.quest.mantis.tests.SoapTests"/>
         </classes>
     </test>
 </suite>

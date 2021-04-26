@@ -13,7 +13,4 @@ public class GeoIpServiceTests {
         assertEquals(ipLocation20, "<GeoIP><Country>US</Country></GeoIP>");
     }
 
-    //String isoCountryName = new GeoIPService().getGeoIPServiceSoap12().getCountryISO2ByName("USA");
-    //assertEquals(isoCountryName, "<GeoIP><Country>US</Country></GeoIP>");
-
 }
