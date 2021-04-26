@@ -6,7 +6,6 @@ repositories {
 
 dependencies {
     implementation 'org.testng:testng:7.4.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-1'
 }
 
 buildscript{
@@ -26,4 +25,6 @@ wsdl2java {
     wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
                           ['src/main/resources/geoipservice.wsdl'],
     ]
+
+    cxfVersion = "2.5.1"
 }
