@@ -26,5 +26,9 @@ wsdl2java {
                           ['src/main/resources/geoipservice.wsdl'],
     ]
 
-    cxfVersion = "2.5.1"
+    cxfVersion = "3.3.1"
+}
+test {
+    useTestNG {
+    }
 }
