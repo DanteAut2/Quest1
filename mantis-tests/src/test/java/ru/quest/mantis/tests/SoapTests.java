@@ -1,5 +1,6 @@
 package ru.quest.mantis.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.quest.mantis.model.Issue;
 import ru.quest.mantis.model.Project;
@@ -13,8 +14,12 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class SoapTests extends TestBase {
 
-    @Test
+    @BeforeMethod
+    public void checkIfIssueIsFixed() throws MalformedURLException, ServiceException, RemoteException {
+        skipIfNotFixed(0000001);
+    }
 
+    @Test
     public void testGetProjects() throws MalformedURLException, ServiceException, RemoteException {
         Set<Project> projects = app.soap().getProjects();
         System.out.println(projects.size());
