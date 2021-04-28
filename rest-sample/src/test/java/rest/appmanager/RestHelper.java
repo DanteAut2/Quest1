@@ -21,7 +21,7 @@ public class RestHelper {
     }
 
     public Set<Issue> getIssues() throws IOException {
-        String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues.json"))
+        String json = getExecutor().execute(Request.Get("rest.baseUrl"))
                 .returnContent().asString();
         JsonElement parsedListOfIssues = new JsonParser().parse(json);
         JsonElement issues = parsedListOfIssues.getAsJsonObject().get("issues");
@@ -36,7 +36,7 @@ public class RestHelper {
 
     public int createIssue(Issue newIssue) throws IOException {
 
-        String json = getExecutor().execute(Request.Post("https://bugify.stqa.ru/api/issues.json")
+        String json = getExecutor().execute(Request.Post("rest.baseUrl")
                 .bodyForm(new BasicNameValuePair("subject", newIssue.getSubject())
                         , new BasicNameValuePair("description", newIssue.getDescription())))
                 .returnContent().asString();
