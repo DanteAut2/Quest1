@@ -13,7 +13,7 @@ public class UserHelper extends HelperBase {
         click(By.cssSelector("a[href='manage_user_edit_page.php?user_id=" + id + "']"));
     }
 
-    public void resetPassword () {
+    public void resetPassword() {
         click(By.xpath("//input[@value='Reset Password']"));
     }
 

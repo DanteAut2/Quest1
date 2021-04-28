@@ -20,6 +20,6 @@ public class Project {
 
     public Project withName(String name) {
         this.name = name;
-        return  this;
+        return this;
     }
 }

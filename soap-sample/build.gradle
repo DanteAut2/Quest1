@@ -8,8 +8,8 @@ dependencies {
     implementation 'org.testng:testng:7.4.0'
 }
 
-buildscript{
-    repositories{
+buildscript {
+    repositories {
         jcenter()
         mavenCentral()
     }

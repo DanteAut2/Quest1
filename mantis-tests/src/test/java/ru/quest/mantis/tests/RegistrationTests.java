@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
-public class RegistrationTests extends TestBase{
+public class RegistrationTests extends TestBase {
 
     //@BeforeMethod
     public void startMailServer() {
@@ -23,7 +23,7 @@ public class RegistrationTests extends TestBase{
         String email = String.format("user1%s@localhost", now);
         String password = "password";
         String user1 = String.format("user1%s", now);
-        app.james().createUser(user1,password);
+        app.james().createUser(user1, password);
         app.registration().start(user1, email);
         //List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
         List<MailMessage> mailMessages = app.james().waitForMail(user1, password, 60000);

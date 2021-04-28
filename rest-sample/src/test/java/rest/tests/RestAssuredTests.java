@@ -1,4 +1,4 @@
-package rest;
+package rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import rest.model.Issue;
 
 import java.io.IOException;
 import java.util.Set;
@@ -39,7 +40,8 @@ public class RestAssuredTests {
         JsonElement parsedListOfIssues = new JsonParser().parse(json);
         JsonElement issues = parsedListOfIssues.getAsJsonObject().get("issues");
 
-        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
+        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
+        }.getType());
     }
 
     private int createIssue(Issue newIssue) throws IOException {

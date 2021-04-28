@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SoapHelper  {
+public class SoapHelper {
 
     private final ApplicationManager app;
 

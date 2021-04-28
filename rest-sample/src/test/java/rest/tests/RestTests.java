@@ -1,4 +1,4 @@
-package rest;
+package rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -8,6 +8,7 @@ import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.message.BasicNameValuePair;
 import org.testng.annotations.Test;
+import rest.model.Issue;
 
 import java.io.IOException;
 import java.util.Set;
@@ -24,7 +25,6 @@ public class RestTests {
         Set<Issue> newIssues = getIssues();
         oldIssues.add(newIssue.withId(issueId));
         assertEquals(newIssues, oldIssues);
-
     }
 
     private Set<Issue> getIssues() throws IOException {
@@ -33,7 +33,8 @@ public class RestTests {
         JsonElement parsedListOfIssues = new JsonParser().parse(json);
         JsonElement issues = parsedListOfIssues.getAsJsonObject().get("issues");
 
-        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
+        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
+        }.getType());
     }
 
     private Executor getExecutor() {

@@ -1,4 +1,4 @@
-package rest;
+package rest.model;
 
 public class Issue {
 
