@@ -35,7 +35,6 @@ public class RestHelper {
     }
 
     public int createIssue(Issue newIssue) throws IOException {
-
         String json = getExecutor().execute(Request.Post("rest.baseUrl")
                 .bodyForm(new BasicNameValuePair("subject", newIssue.getSubject())
                         , new BasicNameValuePair("description", newIssue.getDescription())))

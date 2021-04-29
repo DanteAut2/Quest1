@@ -15,7 +15,7 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestTests {
+public class RestTests extends TestBase{
 
     @Test
     public void testCreateIssue() throws IOException {
@@ -28,7 +28,7 @@ public class RestTests {
     }
 
     private Set<Issue> getIssues() throws IOException {
-        String json = getExecutor().execute(Request.Get("rest.baseUrl"))
+        String json = getExecutor().execute(Request.Get(app.getProperty("rest.baseUrl")))
                 .returnContent().asString();
         JsonElement parsedListOfIssues = new JsonParser().parse(json);
         JsonElement issues = parsedListOfIssues.getAsJsonObject().get("issues");
@@ -37,13 +37,13 @@ public class RestTests {
         }.getType());
     }
 
-    private Executor getExecutor() {
+    public Executor getExecutor() {
         return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490", "");
     }
 
     private int createIssue(Issue newIssue) throws IOException {
 
-        String json = getExecutor().execute(Request.Post("rest.baseUrl")
+        String json = getExecutor().execute(Request.Post(app.getProperty("rest.baseUrl"))
                 .bodyForm(new BasicNameValuePair("subject", newIssue.getSubject())
                         , new BasicNameValuePair("description", newIssue.getDescription())))
                 .returnContent().asString();

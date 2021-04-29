@@ -14,7 +14,7 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase{
 
     @BeforeClass
 
@@ -31,25 +31,20 @@ public class RestAssuredTests {
         Set<Issue> newIssues = getIssues();
         oldIssues.add(newIssue.withId(issueId));
         assertEquals(newIssues, oldIssues);
-
     }
 
     private Set<Issue> getIssues() throws IOException {
-        String json = RestAssured.get("rest.baseUrl").asString();
-
+        String json = RestAssured.get(app.getProperty("rest.baseUrl")).asString();
         JsonElement parsedListOfIssues = new JsonParser().parse(json);
         JsonElement issues = parsedListOfIssues.getAsJsonObject().get("issues");
-
-        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
-        }.getType());
+        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
     }
 
     private int createIssue(Issue newIssue) throws IOException {
-
         String json = RestAssured.given()
                 .parameter("subject", newIssue.getSubject())
                 .parameter("description", newIssue.getDescription())
-                .post("rest.baseUrl").asString();
+                .post(app.getProperty("rest.baseUrl")).asString();
         JsonElement parsed = new JsonParser().parse(json);
         return parsed.getAsJsonObject().get("issue_id").getAsInt();
     }
