@@ -1,0 +1,44 @@
+ru/quest/mantis/model/Users.java
+ ru.quest.mantis.model.Users
+ru/quest/mantis/model/MailMessage.java
+ ru.quest.mantis.model.MailMessage
+ru/quest/mantis/tests/LoginTests.java
+ ru.quest.mantis.tests.LoginTests
+ru/quest/mantis/appmanager/UserHelper.java
+ ru.quest.mantis.appmanager.UserHelper
+ru/quest/mantis/tests/SoapTests.java
+ ru.quest.mantis.tests.SoapTests
+ru/quest/mantis/tests/RegistrationTests.java
+ ru.quest.mantis.tests.RegistrationTests
+ru/quest/mantis/appmanager/NavigationHelper.java
+ ru.quest.mantis.appmanager.NavigationHelper
+ru/quest/mantis/appmanager/FtpHelper.java
+ ru.quest.mantis.appmanager.FtpHelper
+ru/quest/mantis/appmanager/MailHelper.java
+ ru.quest.mantis.appmanager.MailHelper
+ru/quest/mantis/appmanager/SoapHelper.java
+ ru.quest.mantis.appmanager.SoapHelper
+ru/quest/mantis/appmanager/HelperBase.java
+ ru.quest.mantis.appmanager.HelperBase
+ru/quest/mantis/model/Project.java
+ ru.quest.mantis.model.Project
+ru/quest/mantis/model/Issue.java
+ ru.quest.mantis.model.Issue
+ru/quest/mantis/appmanager/JamesHelper.java
+ ru.quest.mantis.appmanager.JamesHelper
+ru/quest/mantis/appmanager/SessionHelper.java
+ ru.quest.mantis.appmanager.SessionHelper
+ru/quest/mantis/tests/ChangePasswordForUser.java
+ ru.quest.mantis.tests.ChangePasswordForUser
+ru/quest/mantis/appmanager/DbHelper.java
+ ru.quest.mantis.appmanager.DbHelper
+ru/quest/mantis/model/UserData.java
+ ru.quest.mantis.model.UserData
+ru/quest/mantis/appmanager/ApplicationManager.java
+ ru.quest.mantis.appmanager.ApplicationManager
+ru/quest/mantis/appmanager/HttpSession.java
+ ru.quest.mantis.appmanager.HttpSession
+ru/quest/mantis/tests/TestBase.java
+ ru.quest.mantis.tests.TestBase
+ru/quest/mantis/appmanager/RegistrationHelper.java
+ ru.quest.mantis.appmanager.RegistrationHelper

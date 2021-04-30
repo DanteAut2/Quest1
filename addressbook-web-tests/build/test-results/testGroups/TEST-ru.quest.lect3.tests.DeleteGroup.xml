@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.DeleteGroup" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-08T11:03:03" hostname="DESKTOP-N81EJ2P" time="0.432">
+  <properties/>
+  <testcase name="testDeleteGroup" classname="ru.quest.lect3.tests.DeleteGroup" time="0.432"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

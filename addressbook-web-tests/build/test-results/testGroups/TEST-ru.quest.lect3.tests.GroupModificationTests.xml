@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.GroupModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-08T11:03:02" hostname="DESKTOP-N81EJ2P" time="0.797">
+  <properties/>
+  <testcase name="testGroupModification" classname="ru.quest.lect3.tests.GroupModificationTests" time="0.797"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

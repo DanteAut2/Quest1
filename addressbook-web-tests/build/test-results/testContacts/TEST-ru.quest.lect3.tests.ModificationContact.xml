@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.ModificationContact" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-08T11:03:19" hostname="DESKTOP-N81EJ2P" time="2.53">
+  <properties/>
+  <testcase name="testContactModification" classname="ru.quest.lect3.tests.ModificationContact" time="2.53"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.ContactCreationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-04-08T11:03:10" hostname="DESKTOP-N81EJ2P" time="8.484">
+  <properties/>
+  <testcase name="creatingNewUser[0](ContactData{id='2147483647', firstName='firstname 0', thirdName='lastname 0'})" classname="ru.quest.lect3.tests.ContactCreationTests" time="3.073"/>
+  <testcase name="creatingNewUser[1](ContactData{id='2147483647', firstName='firstname 1', thirdName='lastname 1'})" classname="ru.quest.lect3.tests.ContactCreationTests" time="2.638"/>
+  <testcase name="creatingNewUser[2](ContactData{id='2147483647', firstName='firstname 2', thirdName='lastname 2'})" classname="ru.quest.lect3.tests.ContactCreationTests" time="2.771"/>
+  <testcase name="testCurrentDir" classname="ru.quest.lect3.tests.ContactCreationTests" time="0.0"/>
+  <system-out><![CDATA[C:\Quest1\addressbook-web-tests\.
+C:\Quest1\addressbook-web-tests\src\test\resources\stru.png
+true
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

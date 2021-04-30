@@ -1,0 +1,42 @@
+ru/quest/lect3/appmanager/NavigationHelper.java
+ ru.quest.lect3.appmanager.NavigationHelper
+ru/quest/lect3/appmanager/SessionHelper.java
+ ru.quest.lect3.appmanager.SessionHelper
+ru/quest/lect3/appmanager/HelperBase.java
+ ru.quest.lect3.appmanager.HelperBase
+ru/quest/lect3/appmanager/ContactHelper.java
+ ru.quest.lect3.appmanager.ContactHelper
+ru/quest/lect3/tests/GroupCreationTests.java
+ ru.quest.lect3.tests.GroupCreationTests
+ ru.quest.lect3.tests.GroupCreationTests$1
+ru/quest/lect3/appmanager/ApplicationManager.java
+ ru.quest.lect3.appmanager.ApplicationManager
+ru/quest/lect3/tests/ContactCreationTests.java
+ ru.quest.lect3.tests.ContactCreationTests
+ ru.quest.lect3.tests.ContactCreationTests$1
+ru/quest/lect3/tests/GroupModificationTests.java
+ ru.quest.lect3.tests.GroupModificationTests
+ru/quest/lect3/generators/ContactDataGenerator.java
+ ru.quest.lect3.generators.ContactDataGenerator
+ru/quest/lect3/tests/DeleteGroup.java
+ ru.quest.lect3.tests.DeleteGroup
+ru/quest/lect3/appmanager/GroupHelper.java
+ ru.quest.lect3.appmanager.GroupHelper
+ru/quest/lect3/model/Contacts.java
+ ru.quest.lect3.model.Contacts
+ru/quest/lect3/model/Groups.java
+ ru.quest.lect3.model.Groups
+ru/quest/lect3/generators/GroupDataGenerator.java
+ ru.quest.lect3.generators.GroupDataGenerator
+ru/quest/lect3/model/GroupData.java
+ ru.quest.lect3.model.GroupData
+ru/quest/lect3/tests/ContactPhoneTests.java
+ ru.quest.lect3.tests.ContactPhoneTests
+ru/quest/lect3/appmanager/TestBase.java
+ ru.quest.lect3.appmanager.TestBase
+ru/quest/lect3/model/ContactData.java
+ ru.quest.lect3.model.ContactData
+ru/quest/lect3/tests/DeleteContact.java
+ ru.quest.lect3.tests.DeleteContact
+ru/quest/lect3/tests/ModificationContact.java
+ ru.quest.lect3.tests.ModificationContact
