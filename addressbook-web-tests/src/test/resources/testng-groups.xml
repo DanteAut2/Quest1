@@ -3,9 +3,7 @@
 <suite name="Suite1" verbose="1">
     <test name="Groups">
         <classes>
-            <class name="ru.quest.lect3.tests.GroupCreationTests"/>
             <class name="ru.quest.lect3.tests.GroupModificationTests"/>
-            <class name="ru.quest.lect3.tests.DeleteGroup"/>
         </classes>
     </test>
 </suite>
