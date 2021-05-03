@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.DeleteContact" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-05-03T01:38:19" hostname="DESKTOP-N81EJ2P" time="0.0">
+  <properties/>
+  <testcase name="testDeleteContact" classname="ru.quest.lect3.tests.DeleteContact" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[04:38:19.816 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testDeleteContact
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

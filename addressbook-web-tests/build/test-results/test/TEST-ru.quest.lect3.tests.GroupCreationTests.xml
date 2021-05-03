@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.GroupCreationTests" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-05-03T01:38:19" hostname="DESKTOP-N81EJ2P" time="0.008">
+  <properties/>
+  <testcase name="testBadGroupCreation" classname="ru.quest.lect3.tests.GroupCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testGroupCreation" classname="ru.quest.lect3.tests.GroupCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testGroupCreation" classname="ru.quest.lect3.tests.GroupCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testGroupCreation" classname="ru.quest.lect3.tests.GroupCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[04:38:19.821 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testBadGroupCreation
+04:38:19.825 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testGroupCreation
+04:38:19.828 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testGroupCreation
+04:38:19.829 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testGroupCreation
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

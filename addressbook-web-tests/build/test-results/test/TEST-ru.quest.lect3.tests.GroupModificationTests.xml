@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.GroupModificationTests" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-05-03T01:38:19" hostname="DESKTOP-N81EJ2P" time="0.0">
+  <properties/>
+  <testcase name="testGroupModification" classname="ru.quest.lect3.tests.GroupModificationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[04:38:19.832 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testGroupModification
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

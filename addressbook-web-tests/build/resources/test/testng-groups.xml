@@ -1,11 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1" >
-    <test name="Groups" >
+<suite name="Suite1" verbose="1">
+    <test name="Groups">
         <classes>
-            <class name="ru.quest.lect3.tests.GroupCreationTests" />
-            <class name="ru.quest.lect3.tests.GroupModificationTests" />
-            <class name="ru.quest.lect3.tests.DeleteGroup" />
+            <class name="ru.quest.lect3.tests.GroupModificationTests"/>
         </classes>
     </test>
 </suite>

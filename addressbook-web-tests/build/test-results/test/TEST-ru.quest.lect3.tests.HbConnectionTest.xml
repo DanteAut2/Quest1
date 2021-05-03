@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.HbConnectionTest" tests="2" skipped="2" failures="0" errors="0" timestamp="2021-05-03T01:38:19" hostname="DESKTOP-N81EJ2P" time="0.0">
+  <properties/>
+  <testcase name="testHbConnectionContact" classname="ru.quest.lect3.tests.HbConnectionTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testHbConnectionGroup" classname="ru.quest.lect3.tests.HbConnectionTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

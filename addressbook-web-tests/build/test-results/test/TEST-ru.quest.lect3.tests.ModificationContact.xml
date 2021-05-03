@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.ModificationContact" tests="1" skipped="1" failures="0" errors="0" timestamp="2021-05-03T01:38:19" hostname="DESKTOP-N81EJ2P" time="0.0">
+  <properties/>
+  <testcase name="testContactModification" classname="ru.quest.lect3.tests.ModificationContact" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[04:38:19.835 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testContactModification
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

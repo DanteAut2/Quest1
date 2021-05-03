@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.quest.lect3.tests.ContactCreationTests" tests="4" skipped="4" failures="0" errors="0" timestamp="2021-05-03T01:38:19" hostname="DESKTOP-N81EJ2P" time="0.004">
+  <properties/>
+  <testcase name="creatingNewUser" classname="ru.quest.lect3.tests.ContactCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="creatingNewUser" classname="ru.quest.lect3.tests.ContactCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="creatingNewUser" classname="ru.quest.lect3.tests.ContactCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testCurrentDir" classname="ru.quest.lect3.tests.ContactCreationTests" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[04:38:19.808 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test creatingNewUser
+04:38:19.809 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test creatingNewUser
+04:38:19.810 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test creatingNewUser
+04:38:19.812 [Test worker] INFO  ru.quest.lect3.appmanager.TestBase - Stop test testCurrentDir
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
